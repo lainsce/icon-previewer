@@ -15,6 +15,7 @@ add_project_arguments(
 sources = files(
     'src/Application.vala',
     'src/MainWindow.vala',
+    'src/Services/DialogUtils.vala',
 )
 
 asresources = gnome.compile_resources(

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 Lains
+* Copyright (c) 2021 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -28,6 +28,8 @@ namespace IconPreviewer {
         public string app_id = "com.github.lainsce.icon-previewer";
         public string app_name = "Icon Previewer";
         public string app_icon = "com.github.lainsce.icon-previewer";
+
+        public File file;
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (
@@ -112,9 +114,6 @@ namespace IconPreviewer {
             titlebar.set_decoration_layout ("close:maximize");
             
             var open_file_button = new Gtk.Button.from_icon_name ("document-open", Gtk.IconSize.LARGE_TOOLBAR);
-            open_file_button.clicked.connect (() => {
-                // TODO: open a .svg just for its name.
-            });
             titlebar.pack_start (open_file_button);
             
             var export_file_button = new Gtk.Button.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
@@ -152,7 +151,7 @@ namespace IconPreviewer {
             var icon_d = new Gtk.Image.from_icon_name ("internet-chat", Gtk.IconSize.DIALOG);
             icon_d.pixel_size = 64;
             icon_d.get_style_context ().add_class ("boxed");
-            var icon_e = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_e = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_e.pixel_size = 64;
             icon_e.get_style_context ().add_class ("accented-dark");
             var icon_f = new Gtk.Image.from_icon_name ("multimedia-video-player", Gtk.IconSize.DIALOG);
@@ -171,24 +170,24 @@ namespace IconPreviewer {
             var icon_j = new Gtk.Image.from_icon_name ("internet-chat", Gtk.IconSize.DIALOG);
             icon_j.pixel_size = 64;
             icon_j.get_style_context ().add_class ("boxed");
-            var icon_k = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_k = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_k.pixel_size = 64;
             icon_k.get_style_context ().add_class ("accented");
             var icon_l = new Gtk.Image.from_icon_name ("multimedia-video-player", Gtk.IconSize.DIALOG);
             icon_l.pixel_size = 64;
             icon_l.get_style_context ().add_class ("boxed");
             
-            var icon_16 = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_16 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_16.pixel_size = 16;
-            var icon_24 = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_24 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_24.pixel_size = 24;
-            var icon_32 = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_32 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_32.pixel_size = 32;
-            var icon_48 = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_48 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_48.pixel_size = 48;
-            var icon_64 = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_64 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_64.pixel_size = 64;
-            var icon_128 = new Gtk.Image.from_icon_name (app_icon, Gtk.IconSize.DIALOG);
+            var icon_128 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_128.pixel_size = 128;
             icon_128.margin_end = 12;
             
@@ -272,6 +271,34 @@ namespace IconPreviewer {
             main_grid.attach (app_icon_grid, 0, 3, 1, 1);
             main_grid.show_all ();
 
+            open_file_button.clicked.connect (() => {
+                try {
+                    var chooser = Services.DialogUtils.create_file_chooser (_("Open file"),
+                            Gtk.FileChooserAction.OPEN);
+                    if (chooser.run () == Gtk.ResponseType.ACCEPT)
+                        file = chooser.get_file ();
+                    chooser.destroy();
+                } catch (Error e) {
+                    warning ("Error: %s", e.message);
+                }
+
+                app_id = file.get_basename ().replace (".svg", "");
+                var app_name_index = file.get_basename ().replace (".svg", "").last_index_of (".");
+                app_name = title_case (file.get_basename ().replace (".svg", "").substring (app_name_index + 1));
+
+                label_app.label = app_name;
+                label_id.label = app_id;
+
+                icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_24.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_32.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_48.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_64.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+                icon_128.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            });
+
             this.add (main_grid);
             this.set_size_request (360, 360);
             this.show_all ();
@@ -305,6 +332,19 @@ namespace IconPreviewer {
             IconPreviewer.Application.gsettings.set_int("window-height", h);
 
             return false;
+        }
+
+        public string title_case (string txt) {
+            string result = "";
+            string sec_name = "";
+            var names = (txt.substring (0, 1).up () + txt.substring (1).down ()).replace ("-"," ").split (" ");
+            foreach (string name in names) {
+                if (name == names[1]) {
+                    sec_name = name.substring (0, 1).up () + name.substring (1).down ();
+                }
+                result = names[0] + " " + sec_name;
+            }
+            return result;
         }
     }
 }
