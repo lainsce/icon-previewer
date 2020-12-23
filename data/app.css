@@ -1,19 +1,15 @@
-@define-color dark #4d4d4d;
-@define-color light #fff;
-@define-color accent_color #1e90ff;
-@define-color accent_color_500 #1e90ff;
-
 .ip-grid {
    background-image: linear-gradient(
      to right,
-     @dark 50%,
+     #333 50%,
      alpha(black, 0.25) 1px,
-     @light 1px
+     #fafafa 1px
    );
    border: 1px solid alpha(black, 0.25);
    border-radius: 6px;
-   padding: 22px;
-   box-shadow: 0px 2px 4px 0px rgba(50, 50, 50, 0.25);
+   padding: 24px;
+   box-shadow: 0 1px 3px alpha(black, 0.12),
+               0 1px 2px alpha(black, 0.24);
 }
 
 .boxed {
@@ -25,20 +21,20 @@
   background: alpha(@accent_color, 0.25);
   border: 1px solid alpha(black, 0.25);
   border-radius: 6px;
-  padding: 18px;
+  padding: 24px;
 }
 
 .accented-dark {
   background: alpha(shade(@accent_color, 0.85), 0.5);
   border: 1px solid alpha(black, 0.25);
   border-radius: 6px;
-  padding: 18px;
+  padding: 24px;
 }
 
 .light_text {
-  color: #FAFAFA;
+  color: white;
 }
 
 .dark_text {
-  color: #333333;
+  color: #333;
 }

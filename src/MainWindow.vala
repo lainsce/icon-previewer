@@ -19,12 +19,27 @@
 namespace IconPreviewer {
     public class MainWindow : Hdy.ApplicationWindow {
         public Gtk.Grid main_grid;
+        public Gtk.Image icon_16;
+        public Gtk.Image icon_24;
+        public Gtk.Image icon_32;
+        public Gtk.Image icon_48;
+        public Gtk.Image icon_64;
+        public Gtk.Image icon_128;
+        public Gtk.Image icon_e;
+        public Gtk.Image icon_k;
+        public Gtk.Label label_e;
+        public Gtk.Label label_k;
+        public Gtk.Label label_app;
+        public Gtk.Label label_id;
+        public Gtk.Stack stack;
         public Hdy.HeaderBar titlebar;
         public Gtk.Application app { get; construct; }
+        public GLib.File file;
+
         public string app_id = "com.github.lainsce.icon-previewer";
         public string app_name = "Icon Previewer";
         public string app_icon = "com.github.lainsce.icon-previewer";
-        public File file;
+        public string app_path = "";
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (
@@ -110,52 +125,25 @@ namespace IconPreviewer {
             Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
             Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
 
-            titlebar = new Hdy.HeaderBar ();
-            titlebar.show_close_button = true;
-            titlebar.has_subtitle = false;
-            titlebar.title = "Icon Previewer";
-            titlebar.set_show_close_button (true);
-            titlebar.hexpand = true;
-            titlebar.set_decoration_layout ("close:maximize");
-            
-            var open_file_button = new Gtk.Button.from_icon_name ("document-open", Gtk.IconSize.LARGE_TOOLBAR);
-            titlebar.pack_start (open_file_button);
-
-            var export_file_button = new Gtk.Button.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
-
-            var menu_grid = new Gtk.Grid ();
-            menu_grid.margin = 6;
-            menu_grid.row_spacing = 6;
-            menu_grid.column_spacing = 12;
-            menu_grid.orientation = Gtk.Orientation.VERTICAL;
-            menu_grid.show_all ();
-
-            var menu = new Gtk.Popover (null);
-            menu.add (menu_grid);
-
-            var menu_button = new Gtk.MenuButton ();
-            menu_button.set_image (new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR));
-            menu_button.has_tooltip = true;
-            menu_button.tooltip_text = (_("Settings"));
-            menu_button.popover = menu;
-            titlebar.pack_end (menu_button);
-            titlebar.pack_end (export_file_button);
+            var titlebar = new Widgets.TitleBar (this);
+            titlebar.open.connect (on_open);
+            titlebar.refresh.connect (on_refresh);
             
             var appa_label_grid = make_grid (_("Calculator"), "accessories-calculator", 64, true);
             var appb_label_grid = make_grid (_("Text Editor"), "accessories-text-editor", 64, true);
             var appc_label_grid = make_grid (_("Camera"), "accessories-camera", 64, true);
             var appd_label_grid = make_grid (_("Chat"), "internet-chat", 64, true);
-            var appf_label_grid = make_grid (_("Videos"), "multimedia-video-player", 64, true);
+            var appf_label_grid = make_grid (_("Video Player"), "multimedia-video-player", 64, true);
 
             var appg_label_grid = make_grid (_("Calculator"), "accessories-calculator", 64, false);
             var apph_label_grid = make_grid (_("Text Editor"), "accessories-text-editor", 64, false);
             var appi_label_grid = make_grid (_("Camera"), "accessories-camera", 64, false);
             var appj_label_grid = make_grid (_("Chat"), "internet-chat", 64, false);
-            var appl_label_grid = make_grid (_("Videos"), "multimedia-video-player", 64, false);
+            var appl_label_grid = make_grid (_("Video Player"), "multimedia-video-player", 64, false);
 
-            var icon_e = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_e = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_e.pixel_size = 64;
-            var label_e = new Gtk.Label (app_name);
+            label_e = new Gtk.Label (app_name);
             label_e.halign = Gtk.Align.CENTER;
             label_e.justify = Gtk.Justification.CENTER;
             label_e.lines = 2;
@@ -172,9 +160,9 @@ namespace IconPreviewer {
             appe_label_grid.attach (icon_e, 0, 0, 1, 1);
             appe_label_grid.attach (label_e, 0, 1, 1, 1);
             
-            var icon_k = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_k = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_k.pixel_size = 64;
-            var label_k = new Gtk.Label (app_name);
+            label_k = new Gtk.Label (app_name);
             label_k.halign = Gtk.Align.CENTER;
             label_k.justify = Gtk.Justification.CENTER;
             label_k.lines = 2;
@@ -226,17 +214,17 @@ namespace IconPreviewer {
             icon_grid.attach (dark_side_grid, 0, 0, 1, 1);
             icon_grid.attach (light_side_grid, 1, 0, 1, 1);
             
-            var icon_16 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_16 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_16.pixel_size = 16;
-            var icon_24 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_24 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_24.pixel_size = 24;
-            var icon_32 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_32 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_32.pixel_size = 32;
-            var icon_48 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_48 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_48.pixel_size = 48;
-            var icon_64 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_64 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_64.pixel_size = 64;
-            var icon_128 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
+            icon_128 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_128.pixel_size = 128;
 
             var label_16 = new Gtk.Label ("16px");
@@ -269,13 +257,14 @@ namespace IconPreviewer {
             app_icon_grid.attach (label_64, 4, 1, 1, 1);
             app_icon_grid.attach (label_128, 5, 1, 1, 1);
 
-            var label_app = new Gtk.Label (this.app_name);
+            label_app = new Gtk.Label (this.app_name);
             label_app.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
             label_app.halign = Gtk.Align.START;
 
-            var label_id = new Gtk.Label (this.app_id);
+            label_id = new Gtk.Label (this.app_id);
             label_id.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
             label_id.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+            label_id.halign = Gtk.Align.START;
 
             var app_label_grid = new Gtk.Grid ();
             app_label_grid.margin = 6;
@@ -285,46 +274,18 @@ namespace IconPreviewer {
             app_label_grid.attach (label_app, 0, 0, 1, 1);
             app_label_grid.attach (label_id, 0, 1, 1, 1);
 
+            var preview_grid = new Gtk.Grid ();
+            preview_grid.attach (icon_grid, 0, 1, 1, 1);
+            preview_grid.attach (app_label_grid, 0, 2, 1, 1);
+            preview_grid.attach (app_icon_grid, 0, 3, 1, 1);
+
+            stack = new Gtk.Stack ();
+            stack.add_named (new Widgets.WelcomeView (this), "welcome");
+            stack.add_named (preview_grid, "preview");
+
             main_grid = new Gtk.Grid ();
             main_grid.attach (titlebar, 0, 0, 1, 1);
-            main_grid.attach (icon_grid, 0, 1, 1, 1);
-            main_grid.attach (app_label_grid, 0, 2, 1, 1);
-            main_grid.attach (app_icon_grid, 0, 3, 1, 1);
-            main_grid.show_all ();
-
-            open_file_button.clicked.connect (() => {
-                try {
-                    var chooser = Services.DialogUtils.create_file_chooser (_("Open file"), Gtk.FileChooserAction.OPEN);
-                    if (chooser.run () == Gtk.ResponseType.ACCEPT)
-                        file = chooser.get_file ();
-                    chooser.destroy();
-                } catch (Error e) {
-                    warning ("Error: %s", e.message);
-                }
-                this.app_id = file.get_basename ().replace (".svg", "");
-                var app_name_index = file.get_basename ().replace (".svg", "").last_index_of (".");
-                this.app_name = title_case (file.get_basename ().replace (".svg", "").substring (app_name_index + 1));
-                this.app_icon = app_id;
-
-                label_app.label = app_name;
-                label_id.label = app_id;
-
-                label_e.label = app_name;
-                label_k.label = app_name;
-
-                icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_24.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_32.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_48.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_64.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-                icon_128.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            });
-
-            export_file_button.clicked.connect (() => {
-                // TODO: export SVG from the app_icon Gtk.Images below.
-            });
+            main_grid.attach (stack, 0, 1, 1, 1);
 
             this.add (main_grid);
             this.set_size_request (360, 360);
@@ -361,13 +322,25 @@ namespace IconPreviewer {
 
         public string title_case (string txt) {
             string result = "";
-            string sec_name = "";
-            var names = (txt.substring (0, 1).up () + txt.substring (1).down ()).replace ("-"," ").split (" ");
+            string 1st_name = "";
+            string 2nd_name = "";
+            string 3rd_name = "";
+            var names = (txt.substring (0, 1).up () + txt.substring (1).down ()).replace ("-"," ").replace ("_"," ").split (" ");
             foreach (string name in names) {
-                if (name == names[1]) {
-                    sec_name = name.substring (0, 1).up () + name.substring (1).down ();
+                if (name == names[0]) {
+                    1st_name = name.substring (0, 1).up () + name.substring (1).down ();
+                    result = 1st_name;
+                } else if (name == names[1]) {
+                    if (name == "os") {
+                        2nd_name = name.up ();
+                    } else {
+                        2nd_name = name.substring (0, 1).up () + name.substring (1).down ();
+                    }
+                    result = 2nd_name;
+                } else if (name == names[2]) {
+                    3rd_name = name.substring (0, 1).up () + name.substring (1).down ();
+                    result = 2nd_name + " " + 3rd_name;
                 }
-                result = names[0] + " " + sec_name;
             }
             return result;
         }
@@ -387,6 +360,12 @@ namespace IconPreviewer {
 
             if (appn != null) {
                 var label = new Gtk.Label (appn);
+                label.halign = Gtk.Align.CENTER;
+                label.justify = Gtk.Justification.CENTER;
+                label.lines = 2;
+                label.max_width_chars = 16;
+                label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+                label.set_ellipsize (Pango.EllipsizeMode.END);
 
                 if (dark) {
                     label.get_style_context ().add_class ("light_text");
@@ -399,6 +378,50 @@ namespace IconPreviewer {
             }
 
             return grid;
+        }
+
+        // IO stuff
+        public void on_open () {
+            var chooser = Services.DialogUtils.create_file_chooser (_("Open file"), Gtk.FileChooserAction.OPEN);
+            if (chooser.run () == Gtk.ResponseType.ACCEPT) {
+                file = chooser.get_file ();
+                chooser.destroy();
+            }
+
+            this.app_path = file.get_path ();
+
+            this.app_id = file.get_basename ().replace (".svg", "");
+            var app_name_index = file.get_basename ().replace (".svg", "").last_index_of (".");
+            this.app_name = title_case (file.get_basename ().replace (".svg", "").substring (app_name_index + 1));
+            this.app_icon = app_id;
+
+            label_app.label = app_name;
+            label_id.label = app_id;
+
+            label_e.label = app_name;
+            label_k.label = app_name;
+
+            icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_24.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_32.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_48.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_64.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_128.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+        }
+
+        public void on_refresh () {
+            // TODO: Refresh icon from file, save file path and use it
+
+            icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_24.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_32.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_48.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_64.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            icon_128.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
         }
     }
 }

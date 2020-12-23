@@ -16,6 +16,8 @@ sources = files(
     'src/Application.vala',
     'src/MainWindow.vala',
     'src/Services/DialogUtils.vala',
+    'src/Widgets/HeaderBar.vala',
+    'src/Widgets/WelcomeView.vala',
 )
 
 asresources = gnome.compile_resources(
