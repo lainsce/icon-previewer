@@ -336,7 +336,7 @@ namespace IconPreviewer {
                     } else {
                         2nd_name = name.substring (0, 1).up () + name.substring (1).down ();
                     }
-                    result = 2nd_name;
+                    result = 1st_name + " " + 2nd_name;
                 } else if (name == names[2]) {
                     3rd_name = name.substring (0, 1).up () + name.substring (1).down ();
                     result = 2nd_name + " " + 3rd_name;
