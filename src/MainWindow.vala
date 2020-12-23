@@ -130,16 +130,26 @@ namespace IconPreviewer {
             titlebar.refresh.connect (on_refresh);
             
             var appa_label_grid = make_grid (_("Calculator"), "accessories-calculator", 64, true);
+            appa_label_grid.get_style_context ().add_class ("boxed");
             var appb_label_grid = make_grid (_("Text Editor"), "accessories-text-editor", 64, true);
+            appb_label_grid.get_style_context ().add_class ("boxed");
             var appc_label_grid = make_grid (_("Camera"), "accessories-camera", 64, true);
+            appc_label_grid.get_style_context ().add_class ("boxed");
             var appd_label_grid = make_grid (_("Chat"), "internet-chat", 64, true);
+            appd_label_grid.get_style_context ().add_class ("boxed");
             var appf_label_grid = make_grid (_("Video Player"), "multimedia-video-player", 64, true);
+            appf_label_grid.get_style_context ().add_class ("boxed");
 
             var appg_label_grid = make_grid (_("Calculator"), "accessories-calculator", 64, false);
+            appg_label_grid.get_style_context ().add_class ("boxed");
             var apph_label_grid = make_grid (_("Text Editor"), "accessories-text-editor", 64, false);
+            apph_label_grid.get_style_context ().add_class ("boxed");
             var appi_label_grid = make_grid (_("Camera"), "accessories-camera", 64, false);
+            appi_label_grid.get_style_context ().add_class ("boxed");
             var appj_label_grid = make_grid (_("Chat"), "internet-chat", 64, false);
+            appj_label_grid.get_style_context ().add_class ("boxed");
             var appl_label_grid = make_grid (_("Video Player"), "multimedia-video-player", 64, false);
+            appl_label_grid.get_style_context ().add_class ("boxed");
 
             icon_e = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_e.pixel_size = 64;
@@ -154,6 +164,7 @@ namespace IconPreviewer {
 
             var appe_label_grid = new Gtk.Grid ();
             appe_label_grid.get_style_context ().add_class ("accented-dark");
+            appe_label_grid.get_style_context ().add_class ("boxed");
             appe_label_grid.valign = Gtk.Align.CENTER;
             appe_label_grid.halign = Gtk.Align.CENTER;
             appe_label_grid.row_spacing = 6;
@@ -173,6 +184,7 @@ namespace IconPreviewer {
             
             var appk_label_grid = new Gtk.Grid ();
             appk_label_grid.get_style_context ().add_class ("accented");
+            appk_label_grid.get_style_context ().add_class ("boxed");
             appk_label_grid.valign = Gtk.Align.CENTER;
             appk_label_grid.halign = Gtk.Align.CENTER;
             appk_label_grid.row_spacing = 6;
@@ -241,7 +253,7 @@ namespace IconPreviewer {
             label_128.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
             
             var app_icon_grid = new Gtk.Grid ();
-            app_icon_grid.row_homogeneous = true;
+            app_icon_grid.margin_bottom = 24;
             app_icon_grid.column_homogeneous = true;
             app_icon_grid.halign = Gtk.Align.CENTER;
             app_icon_grid.attach (icon_16, 0, 0, 1, 1);
@@ -386,6 +398,8 @@ namespace IconPreviewer {
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 file = chooser.get_file ();
                 chooser.destroy();
+            } else {
+                chooser.destroy();
             }
 
             this.app_path = file.get_path ();
@@ -413,7 +427,7 @@ namespace IconPreviewer {
 
         public void on_refresh () {
             // TODO: Refresh icon from file, save file path and use it
-
+            debug ("Refreshed it!");
             icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
             icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
             icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);

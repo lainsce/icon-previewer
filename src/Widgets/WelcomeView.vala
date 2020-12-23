@@ -25,9 +25,9 @@ namespace IconPreviewer.Widgets {
 
             var welcome_view = new Granite.Widgets.Welcome (
                 _("Let's get started!"),
-                _("Start by making a new app icon.")
+                _("Start by opening your icon.")
             );
-            welcome_view.append ("document-new", _("New App Icon"), "Setups name and location.");
+            welcome_view.append ("document-open", _("Open App Icon"), "Opens an icon for viewing. Should be the 128px sized one.");
 
             welcome_view.activated.connect ((option) => {
                 switch (option) {
@@ -40,8 +40,7 @@ namespace IconPreviewer.Widgets {
         }
 
         private void configure () {
-            // TODO: Dialog with icon creation from a pre-made SVG file
-            // named by user in the chosen directory by the user.
+            win.on_open ();
             win.stack.set_visible_child_name ("preview");
         }
     }

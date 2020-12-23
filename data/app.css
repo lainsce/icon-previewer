@@ -20,15 +20,11 @@
 .accented {
   background: alpha(@accent_color, 0.25);
   border: 1px solid alpha(black, 0.25);
-  border-radius: 6px;
-  padding: 24px;
 }
 
 .accented-dark {
   background: alpha(shade(@accent_color, 0.85), 0.5);
   border: 1px solid alpha(black, 0.25);
-  border-radius: 6px;
-  padding: 24px;
 }
 
 .light_text {

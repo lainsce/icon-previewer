@@ -15,8 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 namespace IconPreviewer.Services.DialogUtils {
-    public Gtk.FileChooserDialog create_file_chooser (string title,
-            Gtk.FileChooserAction action) {
+    public Gtk.FileChooserDialog create_file_chooser (string title, Gtk.FileChooserAction action) {
         var chooser = new Gtk.FileChooserDialog (title, null, action);
         chooser.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
         if (action == Gtk.FileChooserAction.OPEN) {

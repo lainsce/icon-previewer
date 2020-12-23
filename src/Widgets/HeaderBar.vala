@@ -30,8 +30,6 @@ namespace IconPreviewer.Widgets {
             var open_file_button = new Gtk.Button.from_icon_name ("document-open", Gtk.IconSize.LARGE_TOOLBAR);
             open_file_button.clicked.connect (() => open ());
 
-            var export_file_button = new Gtk.Button.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
-
             var refresh_button = new Gtk.ModelButton ();
             refresh_button.get_child ().destroy ();
             var refresh_button_accellabel = new Granite.AccelLabel.from_action_name (
@@ -60,7 +58,6 @@ namespace IconPreviewer.Widgets {
 
             pack_end (menu_button);
             pack_start (open_file_button);
-            pack_end (export_file_button);
 
             if (win.stack != null) {
                 if (win.stack.get_visible_child_name () != "welcome") {
