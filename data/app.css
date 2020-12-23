@@ -34,3 +34,11 @@
   border-radius: 6px;
   padding: 18px;
 }
+
+.light_text {
+  color: #FAFAFA;
+}
+
+.dark_text {
+  color: #333333;
+}

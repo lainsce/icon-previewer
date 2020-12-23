@@ -20,7 +20,7 @@
 				<summary>Window position</summary>
 				<description>The width of the window</description>
 		</key>
-	    <key name="dark-mode" type="b">
+	  <key name="dark-mode" type="b">
 				<default>false</default>
 				<summary>Use dark mode</summary>
 				<description>Whether the UI is dark or not.</description>
