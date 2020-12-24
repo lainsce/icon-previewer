@@ -32,7 +32,8 @@ namespace IconPreviewer {
         public Gtk.Label label_app;
         public Gtk.Label label_id;
         public Gtk.Stack stack;
-        public Hdy.HeaderBar titlebar;
+        public Gtk.Stack titlebar_stack;
+        public Widgets.TitleBar titlebar;
         public Gtk.Application app { get; construct; }
         public GLib.File file;
 
@@ -296,8 +297,29 @@ namespace IconPreviewer {
             stack.add_named (new Widgets.WelcomeView (this), "welcome");
             stack.add_named (preview_grid, "preview");
 
+            // Used so the welcome titlebar, which is flat, and with no buttons
+            // doesn't jump in size when transtitioning to the preview titlebar.
+            var dummy_welcome_title_button = new Gtk.Button ();
+            dummy_welcome_title_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+            dummy_welcome_title_button.sensitive = false;
+
+            var welcome_titlebar = new Hdy.HeaderBar ();
+            welcome_titlebar.show_close_button = true;
+            welcome_titlebar.has_subtitle = false;
+            welcome_titlebar.title = "Icon Previewer";
+            welcome_titlebar.set_decoration_layout ("close:maximize");
+            welcome_titlebar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+            welcome_titlebar.get_style_context ().add_class ("welcome-title");
+
+            welcome_titlebar.pack_start (dummy_welcome_title_button);
+
+            titlebar_stack = new Gtk.Stack ();
+            titlebar_stack.set_transition_type (Gtk.StackTransitionType.CROSSFADE);
+            titlebar_stack.add_named (welcome_titlebar, "welcome-title");
+            titlebar_stack.add_named (titlebar, "preview-title");
+
             main_grid = new Gtk.Grid ();
-            main_grid.attach (titlebar, 0, 0, 1, 1);
+            main_grid.attach (titlebar_stack, 0, 0, 1, 1);
             main_grid.attach (stack, 0, 1, 1, 1);
 
             this.add (main_grid);
@@ -402,6 +424,7 @@ namespace IconPreviewer {
                 chooser.destroy();
 
                 stack.set_visible_child_name ("preview");
+                titlebar_stack.set_visible_child_name ("preview-title");
 
                 this.app_path = file.get_path ();
 

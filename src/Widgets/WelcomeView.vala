@@ -25,22 +25,26 @@ namespace IconPreviewer.Widgets {
 
             var welcome_view = new Granite.Widgets.Welcome (
                 _("Preview An Icon"),
-                _("Start by opening your icon.")
+                _("Open an icon to preview.")
             );
-            welcome_view.append ("document-open", _("Open App Icon"), "Opens an icon for viewing. Should be the 128px sized one.");
+            welcome_view.append ("document-open", _("Open App Icon"), "Opens an icon for viewing.");
+            welcome_view.append ("help-contents", _("Icon Guidelines"), "Check the Icon guidelines in your browser.");
 
             welcome_view.activated.connect ((option) => {
                 switch (option) {
                     case 0:
-                        configure ();
+                        win.on_open ();
                         break;
+                    case 1:
+                        try {
+					        GLib.AppInfo.launch_default_for_uri ("https://elementary.io/docs/human-interface-guidelines#iconography", null);
+					    } catch (Error e) {
+					        message ("Err: %s", e.message);
+					    }
+					    break;
                 }
             });
             this.add (welcome_view);
-        }
-
-        private void configure () {
-            win.on_open ();
         }
     }
 }
