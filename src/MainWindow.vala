@@ -411,31 +411,44 @@ namespace IconPreviewer {
 
             label_app.label = app_name;
             label_id.label = app_id;
-
             label_e.label = app_name;
             label_k.label = app_name;
 
-            icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_24.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_32.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_48.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_64.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_128.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            var pixbuf1 = new Gdk.Pixbuf.from_file_at_scale(app_path, 16, 16, true);
+            var pixbuf2 = new Gdk.Pixbuf.from_file_at_scale(app_path, 24, 24, true);
+            var pixbuf3 = new Gdk.Pixbuf.from_file_at_scale(app_path, 32, 32, true);
+            var pixbuf4 = new Gdk.Pixbuf.from_file_at_scale(app_path, 48, 48, true);
+            var pixbuf5 = new Gdk.Pixbuf.from_file_at_scale(app_path, 64, 64, true);
+            var pixbuf6 = new Gdk.Pixbuf.from_file_at_scale(app_path, 128, 128, true);
+
+            icon_e.set_from_pixbuf (pixbuf5);
+            icon_k.set_from_pixbuf (pixbuf5);
+            icon_16.set_from_pixbuf (pixbuf1);
+            icon_24.set_from_pixbuf (pixbuf2);
+            icon_32.set_from_pixbuf (pixbuf3);
+            icon_48.set_from_pixbuf (pixbuf4);
+            icon_64.set_from_pixbuf (pixbuf5);
+            icon_128.set_from_pixbuf (pixbuf6);
         }
 
         public void on_refresh () {
             // TODO: Refresh icon from file, save file path and use it
             debug ("Refreshed it!");
-            icon_e.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_k.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_16.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_24.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_32.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_48.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_64.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
-            icon_128.set_from_icon_name (app_id, Gtk.IconSize.DIALOG);
+            var pixbuf1 = new Gdk.Pixbuf.from_file_at_scale(app_path, 16, 16, true);
+            var pixbuf2 = new Gdk.Pixbuf.from_file_at_scale(app_path, 24, 24, true);
+            var pixbuf3 = new Gdk.Pixbuf.from_file_at_scale(app_path, 32, 32, true);
+            var pixbuf4 = new Gdk.Pixbuf.from_file_at_scale(app_path, 48, 48, true);
+            var pixbuf5 = new Gdk.Pixbuf.from_file_at_scale(app_path, 64, 64, true);
+            var pixbuf6 = new Gdk.Pixbuf.from_file_at_scale(app_path, 128, 128, true);
+
+            icon_e.set_from_pixbuf (pixbuf5);
+            icon_k.set_from_pixbuf (pixbuf5);
+            icon_16.set_from_pixbuf (pixbuf1);
+            icon_24.set_from_pixbuf (pixbuf2);
+            icon_32.set_from_pixbuf (pixbuf3);
+            icon_48.set_from_pixbuf (pixbuf4);
+            icon_64.set_from_pixbuf (pixbuf5);
+            icon_128.set_from_pixbuf (pixbuf6);
         }
     }
 }
