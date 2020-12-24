@@ -292,6 +292,7 @@ namespace IconPreviewer {
             preview_grid.attach (app_icon_grid, 0, 3, 1, 1);
 
             stack = new Gtk.Stack ();
+            stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
             stack.add_named (new Widgets.WelcomeView (this), "welcome");
             stack.add_named (preview_grid, "preview");
 
@@ -395,60 +396,51 @@ namespace IconPreviewer {
         // IO stuff
         public void on_open () {
             var chooser = Services.DialogUtils.create_file_chooser (_("Open file"), Gtk.FileChooserAction.OPEN);
+            chooser.set_transient_for (this);
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 file = chooser.get_file ();
                 chooser.destroy();
+
+                stack.set_visible_child_name ("preview");
+
+                this.app_path = file.get_path ();
+
+                this.app_id = file.get_basename ().replace (".svg", "");
+                var app_name_index = file.get_basename ().replace (".svg", "").last_index_of (".");
+                this.app_name = title_case (file.get_basename ().replace (".svg", "").substring (app_name_index + 1));
+                this.app_icon = app_id;
+
+                label_app.label = app_name;
+                label_id.label = app_id;
+                label_e.label = app_name;
+                label_k.label = app_name;
+
+                on_refresh ();
             } else {
                 chooser.destroy();
             }
-
-            this.app_path = file.get_path ();
-
-            this.app_id = file.get_basename ().replace (".svg", "");
-            var app_name_index = file.get_basename ().replace (".svg", "").last_index_of (".");
-            this.app_name = title_case (file.get_basename ().replace (".svg", "").substring (app_name_index + 1));
-            this.app_icon = app_id;
-
-            label_app.label = app_name;
-            label_id.label = app_id;
-            label_e.label = app_name;
-            label_k.label = app_name;
-
-            var pixbuf1 = new Gdk.Pixbuf.from_file_at_scale(app_path, 16, 16, true);
-            var pixbuf2 = new Gdk.Pixbuf.from_file_at_scale(app_path, 24, 24, true);
-            var pixbuf3 = new Gdk.Pixbuf.from_file_at_scale(app_path, 32, 32, true);
-            var pixbuf4 = new Gdk.Pixbuf.from_file_at_scale(app_path, 48, 48, true);
-            var pixbuf5 = new Gdk.Pixbuf.from_file_at_scale(app_path, 64, 64, true);
-            var pixbuf6 = new Gdk.Pixbuf.from_file_at_scale(app_path, 128, 128, true);
-
-            icon_e.set_from_pixbuf (pixbuf5);
-            icon_k.set_from_pixbuf (pixbuf5);
-            icon_16.set_from_pixbuf (pixbuf1);
-            icon_24.set_from_pixbuf (pixbuf2);
-            icon_32.set_from_pixbuf (pixbuf3);
-            icon_48.set_from_pixbuf (pixbuf4);
-            icon_64.set_from_pixbuf (pixbuf5);
-            icon_128.set_from_pixbuf (pixbuf6);
         }
 
         public void on_refresh () {
-            // TODO: Refresh icon from file, save file path and use it
-            debug ("Refreshed it!");
-            var pixbuf1 = new Gdk.Pixbuf.from_file_at_scale(app_path, 16, 16, true);
-            var pixbuf2 = new Gdk.Pixbuf.from_file_at_scale(app_path, 24, 24, true);
-            var pixbuf3 = new Gdk.Pixbuf.from_file_at_scale(app_path, 32, 32, true);
-            var pixbuf4 = new Gdk.Pixbuf.from_file_at_scale(app_path, 48, 48, true);
-            var pixbuf5 = new Gdk.Pixbuf.from_file_at_scale(app_path, 64, 64, true);
-            var pixbuf6 = new Gdk.Pixbuf.from_file_at_scale(app_path, 128, 128, true);
+            try {
+                var pixbuf1 = new Gdk.Pixbuf.from_file_at_scale(app_path, 16, 16, true);
+                var pixbuf2 = new Gdk.Pixbuf.from_file_at_scale(app_path, 24, 24, true);
+                var pixbuf3 = new Gdk.Pixbuf.from_file_at_scale(app_path, 32, 32, true);
+                var pixbuf4 = new Gdk.Pixbuf.from_file_at_scale(app_path, 48, 48, true);
+                var pixbuf5 = new Gdk.Pixbuf.from_file_at_scale(app_path, 64, 64, true);
+                var pixbuf6 = new Gdk.Pixbuf.from_file_at_scale(app_path, 128, 128, true);
 
-            icon_e.set_from_pixbuf (pixbuf5);
-            icon_k.set_from_pixbuf (pixbuf5);
-            icon_16.set_from_pixbuf (pixbuf1);
-            icon_24.set_from_pixbuf (pixbuf2);
-            icon_32.set_from_pixbuf (pixbuf3);
-            icon_48.set_from_pixbuf (pixbuf4);
-            icon_64.set_from_pixbuf (pixbuf5);
-            icon_128.set_from_pixbuf (pixbuf6);
+                icon_e.set_from_pixbuf (pixbuf5);
+                icon_k.set_from_pixbuf (pixbuf5);
+                icon_16.set_from_pixbuf (pixbuf1);
+                icon_24.set_from_pixbuf (pixbuf2);
+                icon_32.set_from_pixbuf (pixbuf3);
+                icon_48.set_from_pixbuf (pixbuf4);
+                icon_64.set_from_pixbuf (pixbuf5);
+                icon_128.set_from_pixbuf (pixbuf6);
+            } catch (Error e) {
+                message ("Err: %s", e.message);
+            }
         }
     }
 }

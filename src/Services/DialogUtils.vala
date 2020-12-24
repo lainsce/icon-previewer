@@ -15,15 +15,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 namespace IconPreviewer.Services.DialogUtils {
-    public Gtk.FileChooserDialog create_file_chooser (string title, Gtk.FileChooserAction action) {
-        var chooser = new Gtk.FileChooserDialog (title, null, action);
-        chooser.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-        if (action == Gtk.FileChooserAction.OPEN) {
-            chooser.add_button (_("Open"), Gtk.ResponseType.ACCEPT);
-        } else if (action == Gtk.FileChooserAction.SAVE) {
-            chooser.add_button (_("Save"), Gtk.ResponseType.ACCEPT);
-            chooser.set_do_overwrite_confirmation (true);
-        }
+    public Gtk.FileChooserNative create_file_chooser (string title, Gtk.FileChooserAction action) {
+        var chooser = new Gtk.FileChooserNative (title, null, action, null, null);
         var filter = new Gtk.FileFilter ();
         filter.set_filter_name (_("SVG files"));
         filter.add_pattern ("*.svg");

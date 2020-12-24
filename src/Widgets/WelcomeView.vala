@@ -24,7 +24,7 @@ namespace IconPreviewer.Widgets {
             this.win = win;
 
             var welcome_view = new Granite.Widgets.Welcome (
-                _("Let's get started!"),
+                _("Preview An Icon"),
                 _("Start by opening your icon.")
             );
             welcome_view.append ("document-open", _("Open App Icon"), "Opens an icon for viewing. Should be the 128px sized one.");
@@ -41,7 +41,6 @@ namespace IconPreviewer.Widgets {
 
         private void configure () {
             win.on_open ();
-            win.stack.set_visible_child_name ("preview");
         }
     }
 }
