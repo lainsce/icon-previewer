@@ -2,10 +2,10 @@
    background-image: linear-gradient(
      to right,
      #333 50%,
-     alpha(black, 0.24) 1px,
+     alpha(@fg_color, 0.24) 1px,
      #fafafa 1px
    );
-   border: 1px solid alpha(black, 0.24);
+   border: 1px solid alpha(balck, 0.24);
    border-radius: 6px;
    padding: 24px;
    box-shadow: 0 1px 3px alpha(black, 0.12),
@@ -23,17 +23,17 @@
 }
 
 .accented {
-  background: alpha(@accent_color, 0.24);
-  border: 1px solid alpha(black, 0.24);
+  background: alpha(@accent_color, 0.1);
+  border: 1px solid alpha(#333, 0.1);
 }
 
 .accented-dark {
-  background: alpha(shade(@accent_color, 0.85), 0.5);
-  border: 1px solid alpha(black, 0.24);
+  background: alpha(shade(@accent_color, 0.85), 0.1);
+  border: 1px solid alpha(#FAFAFA, 0.1);
 }
 
 .light_text {
-  color: white;
+  color: #FAFAFA;
 }
 
 .dark_text {
