@@ -360,23 +360,45 @@ namespace IconPreviewer {
             string 1st_name = "";
             string 2nd_name = "";
             string 3rd_name = "";
-            var names = (txt.substring (0, 1).up () + txt.substring (1).down ()).replace ("-"," ").replace ("_"," ").split (" ");
-            foreach (string name in names) {
-                if (name == names[0]) {
-                    1st_name = name.substring (0, 1).up () + name.substring (1).down ();
-                    result = 1st_name;
-                } else if (name == names[1]) {
-                    if (name == "os") {
-                        2nd_name = name.up ();
+            string 4th_name = "";
+
+            var names = (txt.down ()).replace ("."," ").replace ("_"," ").split (" ");
+
+            if (names[0] != null && names[1] != null && names[2] != null) {
+                // A RDNN can have up to 4 different parts. We'll use only the necessary ones.
+                1st_name = names[0].substring (0, 1).up () + names[0].substring (1).down ();
+                2nd_name = names[1].substring (0, 1).up () + names[1].substring (1).down ();
+                3rd_name = names[2].substring (0, 1).up () + names[2].substring (1).down ();
+                4th_name = names[3].substring (0, 1).up () + names[3].substring (1).down ();
+
+                if (4th_name != null) {
+                    if (4th_name == "Devel") {
+                        result = 3rd_name;
                     } else {
-                        2nd_name = name.substring (0, 1).up () + name.substring (1).down ();
+                        if (4th_name.contains ("-")) {
+                            var no_dash_4th_name = 4th_name.replace ("-", " ").split (" ");
+                            result = no_dash_4th_name[0].substring (0, 1).up () + no_dash_4th_name[0].substring (1).down () + " "
+                                     + no_dash_4th_name[1].substring (0, 1).up () + no_dash_4th_name[1].substring (1).down ();
+                        } else {
+                            result = 4th_name;
+                        }
                     }
-                    result = 1st_name + " " + 2nd_name;
-                } else if (name == names[2]) {
-                    3rd_name = name.substring (0, 1).up () + name.substring (1).down ();
-                    result = 2nd_name + " " + 3rd_name;
+                } else {
+                    if (2nd_name == "os") {
+                        2nd_name = names[1].up ();
+                        result = 2nd_name + " " + 3rd_name;
+                    } else {
+                        if (3rd_name.contains ("-")) {
+                            var no_dash_3rd_name = 3rd_name.replace ("-", " ").split (" ");
+                            result = no_dash_3rd_name[0].substring (0, 1).up () + no_dash_3rd_name[0].substring (1).down () + " "
+                                     + no_dash_3rd_name[1].substring (0, 1).up () + no_dash_3rd_name[1].substring (1).down ();
+                        } else {
+                            result = 3rd_name;
+                        }
+                    }
                 }
             }
+            debug ("1st: %s\n2nd: %s\n3rd: %s\n4th: %s", 1st_name, 2nd_name, 3rd_name, 4th_name);
             return result;
         }
 
@@ -423,20 +445,18 @@ namespace IconPreviewer {
                 file = chooser.get_file ();
                 chooser.destroy();
 
-                stack.set_visible_child_name ("preview");
-                titlebar_stack.set_visible_child_name ("preview-title");
-
                 this.app_path = file.get_path ();
-
                 this.app_id = file.get_basename ().replace (".svg", "");
-                var app_name_index = file.get_basename ().replace (".svg", "").last_index_of (".");
-                this.app_name = title_case (file.get_basename ().replace (".svg", "").substring (app_name_index + 1));
+                this.app_name = title_case (file.get_basename ().replace (".svg", ""));
                 this.app_icon = app_id;
 
                 label_app.label = app_name;
                 label_id.label = app_id;
                 label_e.label = app_name;
                 label_k.label = app_name;
+
+                stack.set_visible_child_name ("preview");
+                titlebar_stack.set_visible_child_name ("preview-title");
 
                 on_refresh ();
             } else {
