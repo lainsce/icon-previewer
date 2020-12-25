@@ -19,6 +19,7 @@
 namespace IconPreviewer {
     public class MainWindow : Hdy.ApplicationWindow {
         public Gtk.Grid main_grid;
+        public Gtk.Grid welcome_grid;
         public Gtk.Image icon_16;
         public Gtk.Image icon_24;
         public Gtk.Image icon_32;
@@ -289,12 +290,15 @@ namespace IconPreviewer {
 
             var preview_grid = new Gtk.Grid ();
             preview_grid.attach (icon_grid, 0, 1, 1, 1);
-            preview_grid.attach (app_label_grid, 0, 2, 1, 1);
-            preview_grid.attach (app_icon_grid, 0, 3, 1, 1);
+            preview_grid.attach (app_label_grid, 0, 3, 1, 1);
+            preview_grid.attach (app_icon_grid, 0, 4, 1, 1);
+
+            welcome_grid = new Gtk.Grid ();
+            welcome_grid.attach (new Widgets.WelcomeView (this), 0, 1, 1, 1);
 
             stack = new Gtk.Stack ();
             stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
-            stack.add_named (new Widgets.WelcomeView (this), "welcome");
+            stack.add_named (welcome_grid, "welcome");
             stack.add_named (preview_grid, "preview");
 
             // Used so the welcome titlebar, which is flat, and with no buttons
@@ -355,50 +359,64 @@ namespace IconPreviewer {
             return false;
         }
 
+        public string split_words (string txt) {
+            // TODO: Split into separate words cases such as FooBar
+
+            string result = "";
+
+            // The initials
+            try {
+                var r = new Regex ("[a-z]+");
+                string[] lines = r.split (txt);
+
+                var r2 = new Regex ("[A-Z]+");
+                string[] lines2 = r2.split (txt);
+
+                result = lines[0] + lines2[1] + " " + lines[1] + lines2[2];
+            } catch (RegexError e) {
+                message ("Err: %s", e.message);
+            }
+            return result;
+        }
+
         public string title_case (string txt) {
             string result = "";
-            string 1st_name = "";
-            string 2nd_name = "";
             string 3rd_name = "";
             string 4th_name = "";
 
-            var names = (txt.down ()).replace ("."," ").replace ("_"," ").split (" ");
+            var names = txt.replace ("."," ").replace ("_"," ").split (" ");
 
             if (names[0] != null && names[1] != null && names[2] != null) {
                 // A RDNN can have up to 4 different parts. We'll use only the necessary ones.
-                1st_name = names[0].substring (0, 1).up () + names[0].substring (1).down ();
-                2nd_name = names[1].substring (0, 1).up () + names[1].substring (1).down ();
                 3rd_name = names[2].substring (0, 1).up () + names[2].substring (1).down ();
                 4th_name = names[3].substring (0, 1).up () + names[3].substring (1).down ();
 
                 if (4th_name != null) {
                     if (4th_name == "Devel") {
-                        result = 3rd_name;
+                        result = split_words (names[2]) + " (Nightly)";
                     } else {
                         if (4th_name.contains ("-")) {
                             var no_dash_4th_name = 4th_name.replace ("-", " ").split (" ");
                             result = no_dash_4th_name[0].substring (0, 1).up () + no_dash_4th_name[0].substring (1).down () + " "
                                      + no_dash_4th_name[1].substring (0, 1).up () + no_dash_4th_name[1].substring (1).down ();
                         } else {
-                            result = 4th_name;
+                            result = split_words (names[3]);
                         }
                     }
                 } else {
-                    if (2nd_name == "os") {
-                        2nd_name = names[1].up ();
-                        result = 2nd_name + " " + 3rd_name;
+                    if (3rd_name.contains ("-")) {
+                        var no_dash_3rd_name = 3rd_name.replace ("-", " ").split (" ");
+                        result = no_dash_3rd_name[0].substring (0, 1).up () + no_dash_3rd_name[0].substring (1).down () + " "
+                                 + no_dash_3rd_name[1].substring (0, 1).up () + no_dash_3rd_name[1].substring (1).down ();
                     } else {
-                        if (3rd_name.contains ("-")) {
-                            var no_dash_3rd_name = 3rd_name.replace ("-", " ").split (" ");
-                            result = no_dash_3rd_name[0].substring (0, 1).up () + no_dash_3rd_name[0].substring (1).down () + " "
-                                     + no_dash_3rd_name[1].substring (0, 1).up () + no_dash_3rd_name[1].substring (1).down ();
+                        if (3rd_name == "Eog") {
+                            result = "Eye of GNOME";
                         } else {
-                            result = 3rd_name;
+                            result = split_words (names[2]);
                         }
                     }
                 }
             }
-            debug ("1st: %s\n2nd: %s\n3rd: %s\n4th: %s", 1st_name, 2nd_name, 3rd_name, 4th_name);
             return result;
         }
 
@@ -443,22 +461,35 @@ namespace IconPreviewer {
             chooser.set_transient_for (this);
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 file = chooser.get_file ();
+
+                if (file.get_basename ().replace (".svg", "").contains (".")) {
+                    this.app_path = file.get_path ();
+                    this.app_id = file.get_basename ().replace (".svg", "");
+                    this.app_name = title_case (file.get_basename ().replace (".svg", ""));
+                    this.app_icon = app_id;
+
+                    stack.set_visible_child_name ("preview");
+                    titlebar_stack.set_visible_child_name ("preview-title");
+
+                    label_app.label = app_name;
+                    label_id.label = app_id;
+                    label_e.label = app_name;
+                    label_k.label = app_name;
+
+                    on_refresh ();
+                } else {
+                    // Reset icons to defaults if the icon chosen isn't RDNN.
+                    this.app_id = "com.github.lainsce.icon-previewer";
+                    this.app_name = "Icon Previewer";
+                    this.app_icon = "com.github.lainsce.icon-previewer";
+                    this.app_path = "";
+
+                    stack.set_visible_child_name ("welcome");
+                    titlebar_stack.set_visible_child_name ("welcome-title");
+
+                    on_denied ();
+                }
                 chooser.destroy();
-
-                this.app_path = file.get_path ();
-                this.app_id = file.get_basename ().replace (".svg", "");
-                this.app_name = title_case (file.get_basename ().replace (".svg", ""));
-                this.app_icon = app_id;
-
-                label_app.label = app_name;
-                label_id.label = app_id;
-                label_e.label = app_name;
-                label_k.label = app_name;
-
-                stack.set_visible_child_name ("preview");
-                titlebar_stack.set_visible_child_name ("preview-title");
-
-                on_refresh ();
             } else {
                 chooser.destroy();
             }
@@ -484,6 +515,27 @@ namespace IconPreviewer {
             } catch (Error e) {
                 message ("Err: %s", e.message);
             }
+        }
+
+        public void on_denied () {
+            var label = new Gtk.Label (_("The icon chosen has a filename that is not formatted as Reverse Domain Name Notation, used for applications."));
+            var infobar = new Gtk.InfoBar ();
+            infobar.get_style_context ().add_class ("ip-infobar");
+            infobar.message_type = Gtk.MessageType.INFO;
+            infobar.set_show_close_button (true);
+            infobar.get_content_area ().add (label);
+            infobar.show_all ();
+
+            infobar.revealed = true;
+            welcome_grid.attach (infobar, 0, 0, 1, 1);
+
+            infobar.close.connect (() => {
+                infobar.set_revealed (false);
+            });
+
+            infobar.response.connect (() => {
+                infobar.set_revealed (false);
+            });
         }
     }
 }

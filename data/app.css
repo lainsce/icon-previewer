@@ -2,14 +2,19 @@
    background-image: linear-gradient(
      to right,
      #333 50%,
-     alpha(black, 0.25) 1px,
+     alpha(black, 0.24) 1px,
      #fafafa 1px
    );
-   border: 1px solid alpha(black, 0.25);
+   border: 1px solid alpha(black, 0.24);
    border-radius: 6px;
    padding: 24px;
    box-shadow: 0 1px 3px alpha(black, 0.12),
                0 1px 2px alpha(black, 0.24);
+}
+
+.ip-infobar revealer > box {
+  border-top: 1px solid alpha(black, 0.24);
+  border-bottom: 1px solid alpha(black, 0.24);
 }
 
 .boxed {
@@ -18,13 +23,13 @@
 }
 
 .accented {
-  background: alpha(@accent_color, 0.25);
-  border: 1px solid alpha(black, 0.25);
+  background: alpha(@accent_color, 0.24);
+  border: 1px solid alpha(black, 0.24);
 }
 
 .accented-dark {
   background: alpha(shade(@accent_color, 0.85), 0.5);
-  border: 1px solid alpha(black, 0.25);
+  border: 1px solid alpha(black, 0.24);
 }
 
 .light_text {

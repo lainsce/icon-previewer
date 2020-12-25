@@ -24,10 +24,10 @@ namespace IconPreviewer.Widgets {
             this.win = win;
 
             var welcome_view = new Granite.Widgets.Welcome (
-                _("Preview An Icon"),
-                _("Open an icon to preview.")
+                _("No App Icon Open"),
+                _("Open app icon to begin previewing")
             );
-            welcome_view.append ("document-open", _("Open App Icon"), "Opens an icon for viewing.");
+            welcome_view.append ("document-open", _("Open App Icon"), "Opens an app icon for viewing.");
             welcome_view.append ("help-contents", _("Icon Guidelines"), "Check the Icon guidelines in your browser.");
 
             welcome_view.activated.connect ((option) => {
