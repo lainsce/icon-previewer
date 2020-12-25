@@ -22,6 +22,7 @@ Please make sure you have these dependencies first before building.
 ```bash
 granite
 gtk+-3.0
+libhandy1
 meson
 ```
 

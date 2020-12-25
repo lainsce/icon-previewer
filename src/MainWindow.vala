@@ -122,15 +122,10 @@ namespace IconPreviewer {
             provider.load_from_resource ("/com/github/lainsce/icon-previewer/app.css");
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            // Ensure use of elementary theme, font and icons, accent color doesn't matter
-            Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.blueberry");
-            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
-            Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
-
             var titlebar = new Widgets.TitleBar (this);
             titlebar.open.connect (on_open);
             titlebar.refresh.connect (on_refresh);
-            
+
             var appa_label_grid = make_grid (_("Calculator"), "accessories-calculator", 64, true);
             appa_label_grid.get_style_context ().add_class ("boxed");
             var appb_label_grid = make_grid (_("Text Editor"), "accessories-text-editor", 64, true);
@@ -172,7 +167,7 @@ namespace IconPreviewer {
             appe_label_grid.row_spacing = 6;
             appe_label_grid.attach (icon_e, 0, 0, 1, 1);
             appe_label_grid.attach (label_e, 0, 1, 1, 1);
-            
+
             icon_k = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_k.pixel_size = 64;
             label_k = new Gtk.Label (app_name);
@@ -183,7 +178,7 @@ namespace IconPreviewer {
             label_k.wrap_mode = Pango.WrapMode.WORD_CHAR;
             label_k.set_ellipsize (Pango.EllipsizeMode.END);
             label_k.get_style_context ().add_class ("dark_text");
-            
+
             var appk_label_grid = new Gtk.Grid ();
             appk_label_grid.get_style_context ().add_class ("accented");
             appk_label_grid.get_style_context ().add_class ("boxed");
@@ -227,7 +222,7 @@ namespace IconPreviewer {
             icon_grid.margin = 12;
             icon_grid.attach (dark_side_grid, 0, 0, 1, 1);
             icon_grid.attach (light_side_grid, 1, 0, 1, 1);
-            
+
             icon_16 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
             icon_16.pixel_size = 16;
             icon_24 = new Gtk.Image.from_icon_name (this.app_icon, Gtk.IconSize.DIALOG);
@@ -253,7 +248,7 @@ namespace IconPreviewer {
             label_64.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
             var label_128 = new Gtk.Label ("128px");
             label_128.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
-            
+
             var app_icon_grid = new Gtk.Grid ();
             app_icon_grid.margin_bottom = 24;
             app_icon_grid.column_homogeneous = true;

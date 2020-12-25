@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=Icon Previewer
+GenericName=Icon Previewer
 Comment=Previews your icon for you to check it with the elementary OS guidelines
 Exec=com.github.lainsce.icon-previewer
 Icon=com.github.lainsce.icon-previewer
@@ -7,5 +8,5 @@ Keywords=Icons;Preview;Check;
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;Office;
+Categories=GNOME;GTK;Utility;Development;Graphics;
 NoDisplay=false
