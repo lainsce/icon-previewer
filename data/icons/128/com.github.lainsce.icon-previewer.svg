@@ -32,10 +32,10 @@
      id="namedview40"
      showgrid="false"
      inkscape:zoom="5.2149125"
-     inkscape:cx="70.330341"
+     inkscape:cx="33.41697"
      inkscape:cy="71.206972"
      inkscape:window-x="26"
-     inkscape:window-y="23"
+     inkscape:window-y="30"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2"
      inkscape:snap-global="true"
@@ -48,23 +48,23 @@
      id="defs4">
     <linearGradient
        inkscape:collect="always"
-       id="linearGradient1232">
+       id="linearGradient1046">
       <stop
-         style="stop-color:#d4d4d4;stop-opacity:1"
+         style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
-         id="stop1224" />
+         id="stop1038" />
       <stop
-         style="stop-color:#d4d4d4;stop-opacity:1"
+         style="stop-color:#ffffff;stop-opacity:1"
          offset="0.49915713"
-         id="stop1226" />
+         id="stop1040" />
       <stop
-         style="stop-color:#333333;stop-opacity:1"
+         style="stop-color:#4d4d4d;stop-opacity:1"
          offset="0.49915713"
-         id="stop1228" />
+         id="stop1042" />
       <stop
-         style="stop-color:#333333;stop-opacity:1"
+         style="stop-color:#4d4d4d;stop-opacity:1"
          offset="1"
-         id="stop1230" />
+         id="stop1044" />
     </linearGradient>
     <linearGradient
        inkscape:collect="always"
@@ -1225,7 +1225,7 @@
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient1232"
+       xlink:href="#linearGradient1046"
        id="linearGradient1222"
        x1="-119.08494"
        y1="49.391594"
@@ -1324,8 +1324,4 @@
        id="path4110"
        style="display:inline;overflow:visible;visibility:visible;opacity:0.05;fill:url(#linearGradient1222);fill-opacity:1.0;stroke:none;stroke-width:1.02723;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker:none;enable-background:accumulate" />
   </g>
-  <path
-     d="M 66.499995,38 V 92"
-     id="path3125"
-     style="opacity:0.2;fill:none;stroke:url(#linearGradient3905);stroke-width:0.999989px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
 </svg>
