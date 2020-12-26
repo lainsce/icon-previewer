@@ -22,6 +22,7 @@ namespace IconPreviewer {
         public Gtk.Grid welcome_grid;
         public Gtk.Grid preview_grid;
         public Gtk.Grid app_icon_grid;
+        public Gtk.Grid dialog_grid;
         public Gtk.Image icon_e;
         public Gtk.Image icon_k;
         public Gtk.Label label_e;
@@ -250,9 +251,19 @@ namespace IconPreviewer {
             welcome_grid = new Gtk.Grid ();
             welcome_grid.attach (new Widgets.WelcomeView (this), 0, 1, 1, 1);
 
+            dialog_grid = new Gtk.Grid ();
+            dialog_grid.get_style_context ().add_class ("dialog-grid");
+            dialog_grid.margin = 12;
+            dialog_grid.row_spacing = 6;
+            dialog_grid.column_spacing = 6;
+            dialog_grid.valign = Gtk.Align.CENTER;
+            dialog_grid.halign = Gtk.Align.CENTER;
+            dialog_grid.hexpand = vexpand = true;
+
             stack = new Gtk.Stack ();
             stack.set_transition_type (Gtk.StackTransitionType.SLIDE_LEFT_RIGHT);
             stack.add_named (welcome_grid, "welcome");
+            stack.add_named (dialog_grid, "dialog");
             stack.add_named (preview_grid, "preview");
 
             // Used so the welcome titlebar, which is flat, and with no buttons
@@ -315,20 +326,20 @@ namespace IconPreviewer {
 
         // IO stuff
         public void on_open () {
-            var chooser = Services.DialogUtils.create_dialog (this);
-
-            var dialog_grid = new Gtk.Grid ();
-            dialog_grid.margin = 12;
-            dialog_grid.row_spacing = 6;
-            dialog_grid.column_spacing = 6;
-            dialog_grid.halign = Gtk.Align.CENTER;
-            dialog_grid.valign = Gtk.Align.CENTER;
-
-            var dialog_title = new Gtk.Label (_("Select icon files for use for each size:"));
-            dialog_title.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
+            var dialog_title = new Gtk.Label (_("Select icon files"));
+            dialog_title.get_style_context ().add_class (Granite.STYLE_CLASS_H1_LABEL);
             dialog_title.halign = Gtk.Align.START;
-            dialog_grid.attach (dialog_title, 0, 0, 6, 1);
 
+            var dialog_subtitle = new Gtk.Label (_("Each size is important to have to comply with the guidelines"));
+            dialog_subtitle.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            dialog_subtitle.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+            dialog_subtitle.halign = Gtk.Align.START;
+
+            var dialog_icon_grid = new Gtk.Grid ();
+            dialog_icon_grid.row_homogeneous = true;
+            dialog_icon_grid.column_spacing = 32;
+            dialog_icon_grid.margin = 12;
+            dialog_icon_grid.halign = Gtk.Align.CENTER;
             for (int i = 0; i < sizes.length; i++) {
                 int size = sizes[i];
                 var dialog_icon = Services.Utils.make_button ("document-open-symbolic", size);
@@ -348,22 +359,73 @@ namespace IconPreviewer {
                         message ("Err: %s", e.message);
                     }
                 });
-                dialog_grid.attach (dialog_icon, i, 1, 1, 1);
+                dialog_icon_grid.attach (dialog_icon, i, 0, 1, 1);
 
                 var dialog_label = new Gtk.Label ((@"$size" + "px"));
                 dialog_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
-                dialog_grid.attach (dialog_label, i, 2, 1, 1);
+                dialog_icon_grid.attach (dialog_label, i, 1, 1, 1);
             }
 
-            ((Gtk.Container) chooser.get_content_area ()).add (dialog_grid);
+            var dialog_button_grid = new Gtk.Grid ();
+            dialog_button_grid.column_spacing = 6;
+            dialog_button_grid.halign = Gtk.Align.END;
+            dialog_button_grid.hexpand = true;
 
-            var close_button = chooser.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-            ((Gtk.Button) close_button).clicked.connect (() => chooser.destroy ());
+            var cancel_button = new Gtk.Button.with_label (_("Cancel"));
+            cancel_button.halign = Gtk.Align.END;
+            cancel_button.clicked.connect (() => {
+                files = null;
+                stack.set_visible_child_name ("welcome");
 
-            var ok_button = chooser.add_button (_("Display Icons"), Gtk.ResponseType.OK);
+                foreach (var c in dialog_icon_grid.get_children ()) {
+                    c.destroy ();
+                }
+
+                for (int i = 0; i < sizes.length; i++) {
+                    int size = sizes[i];
+                    var dialog_icon = Services.Utils.make_button ("document-open-symbolic", size);
+                    dialog_icon.valign = Gtk.Align.CENTER;
+                    dialog_icon.get_style_context ().add_class ("bordered-boxed");
+                    dialog_icon.clicked.connect (() => {
+                        File file = open_dialog_action ();
+                        files.add (file);
+
+                        try {
+                            var pixbuf = new Gdk.Pixbuf.from_file_at_scale(file.get_path (), size, size, true);
+                            var image = new Gtk.Image.from_pixbuf (pixbuf);
+
+                            dialog_icon.set_image (image);
+                            dialog_icon.sensitive = false;
+                        } catch (Error e) {
+                            message ("Err: %s", e.message);
+                        }
+                    });
+                    dialog_icon_grid.attach (dialog_icon, i, 0, 1, 1);
+
+                    var dialog_label = new Gtk.Label ((@"$size" + "px"));
+                    dialog_label.get_style_context ().add_class (Gtk.STYLE_CLASS_DIM_LABEL);
+                    dialog_icon_grid.attach (dialog_label, i, 1, 1, 1);
+                }
+            });
+
+            var ok_button = new Gtk.Button.with_label (_("Display Icons"));
+            ok_button.halign = Gtk.Align.END;
             ok_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-            ((Gtk.Button) ok_button).clicked.connect (() => {
+            dialog_button_grid.attach (cancel_button, 0, 0, 1, 1);
+            dialog_button_grid.attach (ok_button, 1, 0, 1, 1);
+
+            if (dialog_grid.get_children () == null) {
+                dialog_grid.attach (dialog_title, 0, 0, 6, 1);
+                dialog_grid.attach (dialog_subtitle, 0, 1, 6, 1);
+                dialog_grid.attach (dialog_icon_grid, 0, 2, 6, 1);
+                dialog_grid.attach (dialog_button_grid, 3, 3, 1, 1);
+            }
+
+            dialog_grid.show_all ();
+            stack.set_visible_child_name ("dialog");
+
+            ok_button.clicked.connect (() => {
                 for (int i = 0; i < sizes.length; i++) {
                     if (files[i].get_basename ().replace (".svg", "").contains (".")) {
                         this.app_id = files[i].get_basename ().replace (".svg", "");
@@ -405,11 +467,7 @@ namespace IconPreviewer {
                 }
                 app_icon_grid.show_all ();
                 preview_grid.attach (app_icon_grid, 0, 4, 1, 1);
-                chooser.destroy ();
             });
-
-            chooser.show_all ();
-            chooser.run ();
         }
 
         public void on_refresh () {
