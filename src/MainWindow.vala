@@ -21,6 +21,7 @@ namespace IconPreviewer {
         public Gtk.Grid main_grid;
         public Gtk.Grid welcome_grid;
         public Gtk.Grid preview_grid;
+        public Gtk.Grid app_icon_grid;
         public Gtk.Image icon_e;
         public Gtk.Image icon_k;
         public Gtk.Label label_e;
@@ -122,6 +123,7 @@ namespace IconPreviewer {
 
             var titlebar = new Widgets.TitleBar (this);
             titlebar.open.connect (on_open);
+            titlebar.refresh.connect (on_refresh);
 
             var appa_label_grid = Services.Utils.make_grid (_("Calculator"), "accessories-calculator", 64, true);
             appa_label_grid.get_style_context ().add_class ("boxed");
@@ -236,6 +238,10 @@ namespace IconPreviewer {
             app_label_grid.orientation = Gtk.Orientation.VERTICAL;
             app_label_grid.attach (label_app, 0, 0, 1, 1);
             app_label_grid.attach (label_id, 0, 1, 1, 1);
+
+            app_icon_grid = new Gtk.Grid ();
+            app_icon_grid.margin_bottom = 24;
+            app_icon_grid.halign = Gtk.Align.CENTER;
 
             preview_grid = new Gtk.Grid ();
             preview_grid.attach (icon_grid, 0, 1, 1, 1);
@@ -357,11 +363,6 @@ namespace IconPreviewer {
             var ok_button = chooser.add_button (_("Display Icons"), Gtk.ResponseType.OK);
             ok_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
-            var app_icon_grid = new Gtk.Grid ();
-            app_icon_grid.margin_bottom = 24;
-            app_icon_grid.column_homogeneous = true;
-            app_icon_grid.halign = Gtk.Align.CENTER;
-
             ((Gtk.Button) ok_button).clicked.connect (() => {
                 for (int i = 0; i < sizes.length; i++) {
                     if (files[i].get_basename ().replace (".svg", "").contains (".")) {
@@ -409,6 +410,32 @@ namespace IconPreviewer {
 
             chooser.show_all ();
             chooser.run ();
+        }
+
+        public void on_refresh () {
+            var pixbuf1 = Services.Utils.make_pixbuf (64, files[4].get_path ());
+
+            foreach (var c in app_icon_grid.get_children ()) {
+                c.destroy ();
+            }
+
+            for (int i = 0; i < sizes.length; i++) {
+                if (files[i].get_basename ().replace (".svg", "").contains (".")) {
+                    int size = sizes[i];
+                    var icon = Services.Utils.make_image (files[i].get_path (), size);
+                    icon.get_style_context ().add_class ("boxed");
+                    app_icon_grid.attach (icon, i, 0, 1, 1);
+
+                    var label = new Gtk.Label ((@"$size" + "px"));
+                    label.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+                    app_icon_grid.attach (label, i, 1, 1, 1);
+                }
+            }
+            app_icon_grid.show_all ();
+            preview_grid.attach (app_icon_grid, 0, 4, 1, 1);
+
+            icon_e.set_from_pixbuf (pixbuf1);
+            icon_k.set_from_pixbuf (pixbuf1);
         }
 
         public File open_dialog_action () {
