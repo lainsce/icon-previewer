@@ -23,4 +23,11 @@ namespace IconPreviewer.Services.DialogUtils {
         chooser.add_filter (filter);
         return chooser;
     }
+
+    public Gtk.Dialog create_dialog (MainWindow window) {
+        var dialog = new Gtk.Dialog ();
+        dialog.set_transient_for (window);
+        dialog.set_modal (true);
+        return dialog;
+    }
 }

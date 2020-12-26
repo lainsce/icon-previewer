@@ -5,7 +5,7 @@
      alpha(@fg_color, 0.24) 1px,
      #fafafa 1px
    );
-   border: 1px solid alpha(balck, 0.24);
+   border: 1px solid alpha(black, 0.24);
    border-radius: 6px;
    padding: 24px;
    box-shadow: 0 1px 3px alpha(black, 0.12),
@@ -20,6 +20,12 @@
 .boxed {
   border-radius: 6px;
   padding: 18px;
+}
+
+.bordered-boxed {
+  border-radius: 6px;
+  padding: 12px;
+  border: 1px solid alpha(black, 0.24);
 }
 
 .accented {

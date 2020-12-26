@@ -131,4 +131,31 @@ namespace IconPreviewer.Services.Utils {
 
         return grid;
     }
+
+    public Gtk.Button make_button (string iconn, int size) {
+        var button = new Gtk.Button.from_icon_name ("document-open-symbolic", Gtk.IconSize.DIALOG);
+        ((Gtk.Image) button.get_image ()).pixel_size = size;
+        return button;
+    }
+
+    public Gdk.Pixbuf? make_pixbuf (int size, string path) {
+        try {
+            var pixbuf = new Gdk.Pixbuf.from_file_at_scale (path, size, size, true);
+            return pixbuf;
+        } catch (Error e) {
+            message ("Err: %s", e.message);
+        }
+        return null;
+    }
+
+    public Gtk.Image? make_image (string path, int size) {
+        try {
+            var pixbuf = new Gdk.Pixbuf.from_file_at_scale (path, size, size, true);
+            var image = new Gtk.Image.from_pixbuf (pixbuf);
+            return image;
+        } catch (Error e) {
+            message ("Err: %s", e.message);
+        }
+        return null;
+    }
 }
