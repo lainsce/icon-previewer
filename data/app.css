@@ -2,7 +2,7 @@
    background-image: linear-gradient(
      to right,
      #333 50%,
-     alpha(@fg_color, 0.24) 1px,
+     alpha(@theme_fg_color, 0.24) 1px,
      #fafafa 1px
    );
    border: 1px solid alpha(black, 0.24);
@@ -47,23 +47,23 @@
 }
 
 .welcome-title {
-  background: @base_color;
+  background: @theme_bg_color;
   border-bottom: 1px solid transparent;
   box-shadow: 0 1px 3px transparent,
               0 1px 2px transparent;
 }
 
 .welcome-title > *:disabled {
-  background: @base_color;
+  background: @theme_bg_color;
   border-bottom: 1px solid transparent;
   box-shadow: 0 1px 3px transparent,
               0 1px 2px transparent;
 }
 
 .dialog-grid {
-    background: @base_color;
+    background: @theme_bg_color;
 }
 
 window {
-    background: @base_color;
+    background: @theme_bg_color;
 }

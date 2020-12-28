@@ -29,6 +29,7 @@ namespace IconPreviewer.Widgets {
             );
             welcome_view.append ("document-open", _("Open App Icon"), "Opens an app icon for viewing.");
             welcome_view.append ("help-contents", _("Icon Guidelines"), "Check the Icon guidelines in your browser.");
+            welcome_view.get_style_context ().add_class ("dialog-grid");
 
             welcome_view.activated.connect ((option) => {
                 switch (option) {
