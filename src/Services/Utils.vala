@@ -133,8 +133,9 @@ namespace IconPreviewer.Services.Utils {
     }
 
     public Gtk.Button make_button (string iconn, int size) {
-        var button = new Gtk.Button.from_icon_name ("document-open-symbolic", Gtk.IconSize.DIALOG);
+        var button = new Gtk.Button.from_icon_name (iconn, Gtk.IconSize.DIALOG);
         ((Gtk.Image) button.get_image ()).pixel_size = size;
+        button.valign = Gtk.Align.CENTER;
         return button;
     }
 

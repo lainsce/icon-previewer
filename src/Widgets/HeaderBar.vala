@@ -39,11 +39,21 @@ namespace IconPreviewer.Widgets {
             refresh_button.add (refresh_button_accellabel);
             refresh_button.clicked.connect (() => refresh ());
 
+            var gtk_settings = Gtk.Settings.get_default ();
+            var dark_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic",
+                                                                     "weather-clear-night-symbolic") {
+                valign = Gtk.Align.CENTER,
+                hexpand = true,
+                margin = 12
+            };
+            dark_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+
             var menu_grid = new Gtk.Grid ();
             menu_grid.margin = 6;
             menu_grid.row_spacing = 6;
             menu_grid.column_spacing = 12;
             menu_grid.orientation = Gtk.Orientation.VERTICAL;
+            menu_grid.add (dark_switch);
             menu_grid.add (refresh_button);
             menu_grid.show_all ();
 
