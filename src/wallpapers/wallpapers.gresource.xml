@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<gresources>
-  <gresource prefix="/com/github/lainsce/icon-previewer/wallpapers/">
-    <file>Adwaita.jpg</file>
-    <file>Adwaita-dark.jpg</file>
-  </gresource>
-</gresources>

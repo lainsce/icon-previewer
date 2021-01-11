@@ -3,9 +3,7 @@
   <gresource prefix="/com/github/lainsce/icon-previewer/icons/">
     <file>io.elementary.AppCenter.svg</file>
     <file>io.elementary.Calculator.svg</file>
-    <file>io.elementary.Chat.svg</file>
     <file>io.elementary.Files.svg</file>
-    <file>io.elementary.Friends.svg</file>
     <file>io.elementary.Mail.svg</file>
     <file>io.elementary.Music.svg</file>
     <file>io.elementary.Photos.svg</file>

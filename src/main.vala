@@ -40,14 +40,12 @@ namespace IconPreview {
 		};
 
 		construct {
-			// Bind the actions
 			add_action_entries (ACTION_ENTRIES, this);
 
 			application_id = APP_ID;
 			flags = HANDLES_OPEN;
 		}
 
-		// Open a new window (app.new-window)
 		private void new_window () {
 			new Window (this).show ();
 		}
@@ -67,7 +65,7 @@ namespace IconPreview {
 
 			var styles = new CssProvider ();
 			styles.load_from_resource ("/com/github/lainsce/icon-previewer/gtk/style.css");
-			// Use of uint.MAX isn't ideal but we are effectively in an arms race
+			// Use of uint.MAX isn't ideal, but we need to load the CSS any way we can
 			StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), styles, uint.MAX);
 
 			set_accels_for_action ("win.open", { "<primary>O" });

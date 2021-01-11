@@ -91,7 +91,6 @@ namespace IconPreview {
 
 			notify["hicolor"].connect (() => {
 				if (symbolic == null) {
-					//hide the symbolic icon in the preview
 					sizes.get_child_at (0, 0).hide ();
 					sizes.get_child_at (0, 1).hide ();
 				}
@@ -111,13 +110,11 @@ namespace IconPreview {
 					FileIcon icon = new FileIcon (symbolic);
 					image.set_from_gicon (icon, BUTTON);
 				} else {
-					//hide the symbolic icon in the preview
 					sizes.get_child_at (0, 0).hide ();
 					sizes.get_child_at (0, 1).hide ();
 				}
 			});
 
-			/* first_row                        */
 			for (var i = 0; i < 5; i++) {
 				ico = new DemoIcon (64);
 				small.add (ico);
@@ -126,18 +123,19 @@ namespace IconPreview {
 
 			small.show_all ();
 
-			/* 2nd row                         */
 			for (var i = 0; i < 2; i++) {
 			    ico = new DemoIcon (64);
 			    grid.add (ico);
 			    randoms.append (ico);
 			}
 
+            // A pause for the custom icon…
 			ico = new DemoIcon (64);
 			bind_property ("hicolor", ico, "file");
 			bind_property ("name", ico, "name");
 			grid.add (ico);
 
+			// Resume…
             for (var i = 2; i < 4; i++) {
 			    ico = new DemoIcon (64);
 			    grid.add (ico);
@@ -150,7 +148,7 @@ namespace IconPreview {
 		}
 
 		public void load_samples (File[] samples) requires (samples.length == randoms.length ()) {
-			// This is SUPER hardcoded...
+			// This is SUPER hardcoded…
 			var idx = 0;
 			foreach (var sample in randoms) {
 				sample.name = samples[idx].get_basename ();

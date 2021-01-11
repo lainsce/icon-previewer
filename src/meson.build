@@ -32,10 +32,5 @@ sources += gnome.compile_resources('icons',
   source_dir: 'icons/'
 )
 
-sources += gnome.compile_resources('wallpapers',
-  'wallpapers/wallpapers.gresource.xml',
-  source_dir: 'wallpapers/'
-)
-
 executable(meson.project_name(), sources, dependencies: deps, install: true)
 
