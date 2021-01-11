@@ -121,6 +121,11 @@ namespace IconPreview {
 			// Bind export action state to button visibility
 			var action = lookup_action ("export");
 			action.bind_property ("enabled", exportbtn, "visible", GLib.BindingFlags.SYNC_CREATE);
+
+			// Ensure use of elementary theme, font and icons, accent color is grape because it's a developer tool
+            Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.grape");
+            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
+            Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
 		}
 
 		private void _load_failed () {
