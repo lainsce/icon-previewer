@@ -1,0 +1,6 @@
+const string G_LOG_DOMAIN = @G_LOG_DOMAIN@;
+const string PACKAGE_VERSION = @PACKAGE_VERSION@;
+const string GETTEXT_PACKAGE = @GETTEXT_PACKAGE@;
+const string APP_ID = @APP_ID@;
+const string PROFILE = @PROFILE@;
+const string LOCALE_DIR = @LOCALE_DIR@;
