@@ -1,6 +1,6 @@
 using Gtk;
 namespace IconPreview {
-	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/window.ui")]
+	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/mainwindow.ui")]
 	public class Window : Hdy.ApplicationWindow {
 		[GtkChild]
 		Stack content;

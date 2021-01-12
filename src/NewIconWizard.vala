@@ -1,7 +1,7 @@
 using Gtk;
 
 namespace IconPreview {
-	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/wizard.ui")]
+	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/newiconwizard.ui")]
 	class Wizard : Gtk.Dialog {
 		[GtkChild]
 		Dazzle.FileChooserEntry location;

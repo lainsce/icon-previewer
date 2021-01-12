@@ -5,26 +5,25 @@ deps = [
 	dependency('libhandy-1')
 ]
 
-config = configure_file(input: 'config.vala.in', output: 'config.vala', configuration: conf)
+config = configure_file(input: 'Config.vala.in', output: 'Config.vala', configuration: conf)
 
 sources = [
 	config,
-	'views/utils.vala',
-	'views/utils.vala',
-	'views/colourpane.vala',
-	'views/colour.vala',
-	'exporter/exporter.vala',
-	'wizard.vala',
-	'saver.vala',
-	'common.vala',
-	'window.vala',
-	'main.vala'
+	'Utils.vala',
+	'ColourPane.vala',
+	'Colour.vala',
+	'MainWindow.vala',
+	'Common.vala',
+	'IconExporter.vala',
+	'IconSaver.vala',
+	'NewIconWizard.vala',
+	'Application.vala'
 ]
 
 gnome = import('gnome')
 
 sources += gnome.compile_resources('resources',
-  'resource.gresource.xml'
+  'app.gresource.xml'
 )
 
 sources += gnome.compile_resources('icons',

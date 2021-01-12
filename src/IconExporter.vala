@@ -1,7 +1,7 @@
 using Gtk;
 
 namespace IconPreview {
-  [GtkTemplate (ui = "/com/github/lainsce/icon-previewer/exporter/exporter.ui")]
+  [GtkTemplate (ui = "/com/github/lainsce/icon-previewer/iconexporter.ui")]
   public class Exporter : Popover {
     public new string name { get; set; }
 
