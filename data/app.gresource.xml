@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/lainsce/iconpreviewer/">
+    <file compressed="true" preprocess="xml-stripblanks" alias="newiconwizard.ui">data/ui/newiconwizard.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="iconsaver.ui">data/ui/iconsaver.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="mainwindow.ui">data/ui/mainwindow.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="colourpane.ui">data/ui/colourpane.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="iconexporter.ui">data/ui/iconexporter.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="colour.svg">data/templates/colour.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="badge.svg">data/icons/16/com.github.lainsce.icon-previewer-symbolic.svg</file>
+  </gresource>
+  <gresource prefix="/com/github/lainsce/iconpreviewer/gtk/">
+    <file compressed="true" alias="style.css">data/style.css</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="menus.ui">data/ui/menus.ui</file>
+  </gresource>
+</gresources>

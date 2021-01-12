@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<interface domain="app-icon-preview">
+	<menu id="win-menu">
+		<section id="app">
+			<item>
+				<attribute name="label" translatable="yes">_New Window</attribute>
+				<attribute name="action">app.new-window</attribute>
+			</item>
+		</section>
+		<section id="view">
+			<item>
+				<attribute name="label" translatable="yes">_Reload</attribute>
+				<attribute name="action">win.refresh</attribute>
+				<attribute name="hidden-when">action-disabled</attribute>
+			</item>
+			<item>
+				<attribute name="label" translatable="yes">_Take Screenshot</attribute>
+				<attribute name="action">win.screenshot</attribute>
+				<attribute name="hidden-when">action-disabled</attribute>
+			</item>
+			<item>
+				<attribute name="label" translatable="yes">_Shuffle Example Icons</attribute>
+				<attribute name="action">win.shuffle</attribute>
+				<attribute name="hidden-when">action-disabled</attribute>
+			</item>
+		</section>
+	</menu>
+</interface>
