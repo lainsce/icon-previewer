@@ -153,7 +153,7 @@
                     <property name="lines">2</property>
                     <style>
                       <class name="h1"/>
-                      <class name="title"/>
+                      <class name="large-title"/>
                     </style>
                   </object>
                   <packing>
@@ -166,12 +166,12 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Start making your own, based on the icon guidelines</property>
+                    <property name="label" translatable="yes">Start making one, based on the Icon Guidelines</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                     <property name="ellipsize">end</property>
                     <style>
-                      <class name="subtitle"/>
+                      <class name="heading"/>
                       <class name="h2"/>
                     </style>
                   </object>
@@ -241,7 +241,7 @@
             <child>
               <object class="HdyHeaderBar" id="headerbar">
                 <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="title" translatable="yes">Icon Previewer</property>
                 <property name="show-close-button">True</property>

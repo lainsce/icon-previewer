@@ -16,7 +16,7 @@
             <property name="can-focus">True</property>
             <property name="margin-top">12</property>
             <property name="margin-bottom">12</property>
-            <property name="label" translatable="yes">Export the icon for production use. Off-canvas objects are removed and the SVG is optimised for size.</property>
+            <property name="label" translatable="yes">Export the icon for use. Off-canvas objects are removed and the SVG is optimised for size.</property>
             <property name="justify">center</property>
             <property name="wrap">True</property>
             <property name="max-width-chars">28</property>
@@ -310,7 +310,7 @@
                 <property name="spacing">10</property>
                 <child>
                   <object class="GtkButton">
-                    <property name="label" translatable="yes">Save Symbolic As…</property>
+                    <property name="label" translatable="yes">Save 16px As…</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
@@ -336,7 +336,7 @@
                       <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Symbolic</property>
+                        <property name="label" translatable="yes">16px (symbolic)</property>
                         <attributes>
                           <attribute name="weight" value="bold"/>
                         </attributes>
