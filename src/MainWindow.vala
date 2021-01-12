@@ -17,7 +17,6 @@ namespace IconPreview {
 			{ "open", open },
 			{ "new-icon", new_icon },
 			{ "screenshot", screenshot },
-			{ "copy-screenshot", copy_screenshot },
 			{ "refresh", refresh },
 			{ "shuffle", shuffle },
 			{ "guide", guide },
@@ -189,13 +188,6 @@ namespace IconPreview {
 
 			var s = new ScreenshotSaver (this, buf);
 			s.show ();
-		}
-
-		private void copy_screenshot () requires (content.visible_child is Previewer) {
-			var buf = ((Previewer) content.visible_child).screenshot ();
-
-			var s = new ScreenshotSaver (this, buf);
-			s.copy ();
 		}
 
 		private void guide () {

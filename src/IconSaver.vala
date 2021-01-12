@@ -10,7 +10,6 @@ namespace IconPreview {
 
 		const GLib.ActionEntry[] ACTION_ENTRIES = {
 			{ "close", _close },
-			{ "copy", copy },
 			{ "save", save },
 		};
 
@@ -35,10 +34,6 @@ namespace IconPreview {
 
 		private void _close () {
 			destroy ();
-		}
-
-		public void copy () {
-			Clipboard.get_default (get_display ()).set_image (pixbuf);
 		}
 
 		public void save () {
