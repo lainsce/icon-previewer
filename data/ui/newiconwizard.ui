@@ -82,7 +82,6 @@
                     <property name="visible">True</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes">Save Icon</property>
-                    <property name="text">~/Projects/</property>
                     <property name="hexpand">true</property>
                     <property name="visible">true</property>
                   </object>
@@ -157,7 +156,7 @@ as well as start the template on where to draw the icons on.</property>
                         <property name="wrap">True</property>
                         <style>
                           <class name="h3"/>
-                          <class name="title"/>
+                          <class name="heading"/>
                         </style>
                       </object>
                       <packing>
