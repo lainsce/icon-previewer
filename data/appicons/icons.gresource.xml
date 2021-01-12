@@ -3,6 +3,8 @@
   <gresource prefix="/com/github/lainsce/iconpreviewer/icons/">
     <file>io.elementary.AppCenter.svg</file>
     <file>io.elementary.Calculator.svg</file>
+    <file>io.elementary.Calendar.svg</file>
+    <file>io.elementary.Camera.svg</file>
     <file>io.elementary.Files.svg</file>
     <file>io.elementary.Mail.svg</file>
     <file>io.elementary.Music.svg</file>
@@ -10,5 +12,6 @@
     <file>io.elementary.Terminal.svg</file>
     <file>io.elementary.Videos.svg</file>
     <file>org.gnome.Epiphany.svg</file>
+    <file>org.gnome.Evince.svg</file>
   </gresource>
 </gresources>
