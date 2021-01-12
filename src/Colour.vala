@@ -72,8 +72,8 @@ namespace IconPreview {
 			dark.theme = BASE_THEME + "-dark";
 
 			homogeneous = true;
-			add (light);
 			add (dark);
+			add (light);
 
 			shuffle ();
 		}
