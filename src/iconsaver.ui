@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <template class="IconPreviewScreenshotSaver" parent="GtkDialog">
+  <object class="HdyDialog" id="screenshot_dialog">
     <property name="can_focus">False</property>
     <property name="border_width">0</property>
     <property name="resizable">False</property>
@@ -51,7 +51,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="action_name">dlg.close</property>
+            <property name="action_name">screenshot.close</property>
           </object>
         </child>
         <child>
@@ -62,7 +62,7 @@
             <property name="can_default">True</property>
             <property name="has_default">True</property>
             <property name="receives_default">True</property>
-            <property name="action_name">dlg.save</property>
+            <property name="action_name">screenshot.save</property>
             <style>
               <class name="suggested-action"/>
             </style>
@@ -78,7 +78,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="action_name">dlg.copy</property>
+            <property name="action_name">screenshot.copy</property>
           </object>
           <packing>
             <property name="pack_type">end</property>
@@ -87,5 +87,6 @@
         </child>
       </object>
     </child>
-  </template>
+  </object>
 </interface>
+
