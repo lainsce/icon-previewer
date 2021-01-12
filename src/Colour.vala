@@ -40,7 +40,9 @@ namespace IconPreview {
 					    light.hicolor128 = dark.hicolor128 = _icon;
 				    }
 
-				    exporter.update_regular (light.hicolor128);
+				    exporter.update_regular128 (light.hicolor128);
+				    exporter.update_regular64 (light.hicolor64);
+				    exporter.update_regular32 (light.hicolor32);
 				    exporter.update_symbolic (symbolic);
 				    exporter.name = light.name;
 				    light.symbolic = dark.symbolic = symbolic;

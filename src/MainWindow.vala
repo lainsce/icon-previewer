@@ -43,12 +43,12 @@ namespace IconPreview {
 						svg.get_geometry_for_layer ( "#128", viewport, null, out hicolor128);
 					}
 					if (svg.has_sub ("#64")) {
-            			Rsvg.Rectangle viewport = { 0.0, 0.0, svg.width, svg.height };
-						svg.get_geometry_for_layer ( "#64", viewport, null, out hicolor64);
+            			Rsvg.Rectangle viewport1 = { 0.0, 0.0, svg.width, svg.height };
+						svg.get_geometry_for_layer ( "#64", viewport1, null, out hicolor64);
 					}
 					if (svg.has_sub ("#32")) {
-            			Rsvg.Rectangle viewport = { 0.0, 0.0, svg.width, svg.height };
-						svg.get_geometry_for_layer ( "#32", viewport, null, out hicolor32);
+            			Rsvg.Rectangle viewport2 = { 0.0, 0.0, svg.width, svg.height };
+						svg.get_geometry_for_layer ( "#32", viewport2, null, out hicolor32);
 					}
 
 					if (hicolor128.height == 128 && hicolor128.width == 128 &&
@@ -213,10 +213,22 @@ namespace IconPreview {
 			filename = filename.substring (0, filename.last_index_of (".Source"));
 			File file = null;
 			switch (arg as string) {
-				case "regular": {
+				case "regular128": {
 					title = _("Save Regular");
-					filename = filename + ".svg";
-					file = exporter.get_regular ();
+					filename = filename + "128.svg";
+					file = exporter.get_regular128 ();
+					break;
+				}
+				case "regular64": {
+					title = _("Save Regular");
+					filename = filename + "64.svg";
+					file = exporter.get_regular64 ();
+					break;
+				}
+				case "regular32": {
+					title = _("Save Regular");
+					filename = filename + "32.svg";
+					file = exporter.get_regular32 ();
 					break;
 				}
 				case "symbolic": {
