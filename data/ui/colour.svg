@@ -12,7 +12,7 @@
    inkscape:export-filename="Template.png"
    width="210"
    height="150"
-   id="svg11300"
+   id="a"
    sodipodi:version="0.32"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="colour.svg"
@@ -20,10 +20,21 @@
    version="1.0"
    style="display:inline;enable-background:new"
    viewBox="0 0 210 150">
-  <title
-     id="title4162">Adwaita Icon Template</title>
+  <metadata
+     id="metadata47">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <style
+     id="style" />
   <defs
-     id="defs3" />
+     id="defs" />
   <sodipodi:namedview
      stroke="#ef2929"
      fill="#f57900"
@@ -34,9 +45,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6568542"
-     inkscape:cx="137.31369"
-     inkscape:cy="93.876174"
-     inkscape:current-layer="layer3"
+     inkscape:cx="148.6888"
+     inkscape:cy="77.341874"
+     inkscape:current-layer="layer4"
      showgrid="false"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
@@ -209,65 +220,6 @@
        originx="8"
        originy="8" />
   </sodipodi:namedview>
-  <metadata
-     id="metadata4">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:creator>
-          <cc:Agent>
-            <dc:title>GNOME Design Team</dc:title>
-          </cc:Agent>
-        </dc:creator>
-        <dc:source />
-        <cc:license
-           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
-        <dc:title>Adwaita Icon Template</dc:title>
-        <dc:subject>
-          <rdf:Bag />
-        </dc:subject>
-        <dc:date />
-        <dc:rights>
-          <cc:Agent>
-            <dc:title />
-          </cc:Agent>
-        </dc:rights>
-        <dc:publisher>
-          <cc:Agent>
-            <dc:title />
-          </cc:Agent>
-        </dc:publisher>
-        <dc:identifier />
-        <dc:relation />
-        <dc:language />
-        <dc:coverage />
-        <dc:description />
-        <dc:contributor>
-          <cc:Agent>
-            <dc:title />
-          </cc:Agent>
-        </dc:contributor>
-      </cc:Work>
-      <cc:License
-         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#Reproduction" />
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#Distribution" />
-        <cc:requires
-           rdf:resource="http://creativecommons.org/ns#Notice" />
-        <cc:requires
-           rdf:resource="http://creativecommons.org/ns#Attribution" />
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
-        <cc:requires
-           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
-      </cc:License>
-    </rdf:RDF>
-  </metadata>
   <g
      id="layer1"
      inkscape:label="App Icon"
@@ -278,16 +230,45 @@
        inkscape:groupmode="layer"
        id="layer4"
        inkscape:label="template"
-       style="display:inline"
-       sodipodi:insensitive="true">
+       style="display:inline">
+      <rect
+         style="display:inline;fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
+         id="64"
+         width="64"
+         height="64"
+         x="132.25"
+         y="236.25"
+         rx="0"
+         ry="0"
+         inkscape:label="0" />
+      <rect
+         style="fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
+         id="16"
+         width="16"
+         height="16"
+         x="160"
+         y="172"
+         rx="0"
+         ry="0"
+         inkscape:label="0" />
+      <rect
+         style="display:inline;fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
+         id="32"
+         width="32"
+         height="32"
+         x="160.5"
+         y="200"
+         rx="0"
+         ry="0"
+         inkscape:label="0" />
       <rect
          inkscape:label="0"
          y="172"
          x="9.2651362e-08"
          height="128"
          width="128"
-         id="hicolor"
-         style="display:inline;overflow:visible;visibility:visible;fill:#f0f0f0;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:0.5;marker:none;enable-background:accumulate" />
+         id="128"
+         style="display:inline;fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new" />
       <rect
          style="display:inline;overflow:visible;visibility:visible;fill:#f0f0f0;fill-opacity:0;fill-rule:nonzero;stroke:none;stroke-width:0.5;marker:none;enable-background:accumulate"
          id="symbolic"
@@ -301,7 +282,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4px;line-height:125%;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332649;enable-background:new"
          x="0"
          y="167"
-         id="text863"
+         id="icon-name"
          inkscape:label="icon-name"><tspan
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4px;font-family:Inter;-inkscape-font-specification:'Inter Bold';stroke-width:0.332649"
            sodipodi:role="line"
@@ -310,7 +291,7 @@
            y="167">128px</tspan></text>
       <text
          inkscape:label="icon-name"
-         id="text867"
+         id="text61"
          y="167"
          x="160"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4px;line-height:125%;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.332649;enable-background:new"
@@ -325,7 +306,8 @@
          style="font-size:4px;line-height:1.25;font-family:Inter;-inkscape-font-specification:Inter;display:inline;enable-background:new"
          x="132.25"
          y="233"
-         id="text1005"><tspan
+         id="text59"
+         inkscape:label="icon-name"><tspan
            sodipodi:role="line"
            id="tspan1003"
            x="132.25"
@@ -336,7 +318,8 @@
          style="font-size:4px;line-height:1.25;font-family:Inter;-inkscape-font-specification:Inter;display:inline;enable-background:new"
          x="160.29262"
          y="196.31534"
-         id="text1005-7"><tspan
+         id="text57"
+         inkscape:label="icon-name"><tspan
            sodipodi:role="line"
            id="tspan1003-5"
            x="160.29262"
@@ -347,82 +330,17 @@
        inkscape:groupmode="layer"
        id="layer2"
        inkscape:label="baseplate"
-       style="display:inline"
-       sodipodi:insensitive="true">
-      <g
-         style="display:inline;fill:#000000;enable-background:new"
-         transform="matrix(7.9911709,0,0,8.0036407,-167.7909,-4846.0776)"
-         id="g12027"
-         inkscape:export-xdpi="12"
-         inkscape:export-ydpi="12" />
-      <rect
-         style="display:inline;overflow:visible;visibility:visible;fill:#fafafa;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5;stroke-opacity:1;marker:none;enable-background:accumulate"
-         id="128"
-         width="128"
-         height="128"
-         x="9.2651362e-08"
-         y="172"
-         inkscape:label="0" />
-      <g
-         id="g883"
-         style="fill:none;fill-opacity:0.25098;stroke:#a579b3;stroke-opacity:1"
-         transform="translate(-24,24)" />
-      <g
-         id="g900"
-         style="fill:none;fill-opacity:0.25098;stroke:#a579b3;stroke-opacity:1"
-         transform="translate(-24,24)" />
-      <rect
-         style="fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
-         id="rect1362"
-         width="16"
-         height="16"
-         x="160"
-         y="172"
-         rx="0"
-         ry="0" />
-      <rect
-         style="display:inline;fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
-         id="rect1362-3"
-         width="32"
-         height="32"
-         x="160.5"
-         y="200"
-         rx="0"
-         ry="0" />
-      <rect
-         style="display:inline;fill:#fafafa;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
-         id="rect1362-3-6"
-         width="64"
-         height="64"
-         x="132.25"
-         y="236.25"
-         rx="0"
-         ry="0" />
-    </g>
+       style="display:inline" />
     <g
        inkscape:groupmode="layer"
        id="layer9"
        inkscape:label="icons"
-       style="display:inline">
-      <g
-         id="layer4-0"
-         transform="matrix(1.1817125,0,0,1.102932,-586.46857,-713.55971)"
-         style="stroke-width:0.792497" />
-      <g
-         id="layer4-0-7"
-         transform="matrix(1.1817125,0,0,1.102932,-586.46857,-704.73626)"
-         style="stroke-width:0.792497" />
-      <g
-         id="layer1-3"
-         transform="matrix(1.1817125,0,0,1.102932,62.291597,110.58638)"
-         style="stroke-width:0.792497" />
-    </g>
+       style="display:inline" />
     <g
        inkscape:groupmode="layer"
        id="layer3"
        inkscape:label="grid"
-       style="display:inline"
-       sodipodi:insensitive="true">
+       style="display:inline">
       <path
          inkscape:connector-curvature="0"
          id="path2900"

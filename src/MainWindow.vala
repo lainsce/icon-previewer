@@ -34,14 +34,26 @@ namespace IconPreview {
 				try {
 					var svg = new Rsvg.Handle.from_gfile_sync (value, FLAGS_NONE);
 
-					Rsvg.Rectangle hicolor = { 0.0, 0.0, svg.width, svg.height };
+					Rsvg.Rectangle hicolor128 = { 0.0, 0.0, svg.width, svg.height };
+					Rsvg.Rectangle hicolor64 = { 0.0, 0.0, svg.width, svg.height };
+					Rsvg.Rectangle hicolor32 = { 0.0, 0.0, svg.width, svg.height };
 
-					if (svg.has_sub ("#hicolor")) {
+					if (svg.has_sub ("#128")) {
             			Rsvg.Rectangle viewport = { 0.0, 0.0, svg.width, svg.height };
-						svg.get_geometry_for_layer ( "#hicolor", viewport, null, out hicolor);
+						svg.get_geometry_for_layer ( "#128", viewport, null, out hicolor128);
+					}
+					if (svg.has_sub ("#64")) {
+            			Rsvg.Rectangle viewport = { 0.0, 0.0, svg.width, svg.height };
+						svg.get_geometry_for_layer ( "#64", viewport, null, out hicolor64);
+					}
+					if (svg.has_sub ("#32")) {
+            			Rsvg.Rectangle viewport = { 0.0, 0.0, svg.width, svg.height };
+						svg.get_geometry_for_layer ( "#32", viewport, null, out hicolor32);
 					}
 
-					if (hicolor.height == 128 && hicolor.width == 128) {
+					if (hicolor128.height == 128 && hicolor128.width == 128 &&
+					    hicolor64.height == 64 && hicolor64.width == 64 &&
+					    hicolor32.height == 32 && hicolor32.width == 32) {
 						mode = COLOUR;
 					} else {
 						_file = null;

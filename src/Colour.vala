@@ -19,21 +19,28 @@ namespace IconPreview {
 			    try {
 				    _icon = value;
 				    var svg = new Rsvg.Handle.from_gfile_sync (_icon, FLAGS_NONE);
-				    var hicolor = create_tmp_file ("#hicolor");
-				    render_by_id (svg, "#hicolor", hicolor, 128);
+				    var hicolor128 = create_tmp_file ("#128");
+				    render_by_id (svg, "#128", hicolor128, 128);
+				    var hicolor64 = create_tmp_file ("#64");
+				    render_by_id (svg, "#64", hicolor64, 64);
+				    var hicolor32 = create_tmp_file ("#32");
+				    render_by_id (svg, "#32", hicolor32, 32);
 
 				    var symbolic = create_tmp_file ("#symbolic");
         			render_by_id (svg, "#symbolic", symbolic, 16);
 
 				    light.name = dark.name = _icon.get_basename ();
 
-				    if (hicolor != null) {
-					    light.hicolor = dark.hicolor = hicolor;
+                    // At least one exists
+				    if (hicolor128 != null) {
+					    light.hicolor128 = dark.hicolor128 = hicolor128;
+					    light.hicolor64 = dark.hicolor64 = hicolor64;
+					    light.hicolor32 = dark.hicolor32 = hicolor32;
 				    } else {
-					    light.hicolor = dark.hicolor = _icon;
+					    light.hicolor128 = dark.hicolor128 = _icon;
 				    }
 
-				    exporter.update_regular (light.hicolor);
+				    exporter.update_regular (light.hicolor128);
 				    exporter.update_symbolic (symbolic);
 				    exporter.name = light.name;
 				    light.symbolic = dark.symbolic = symbolic;

@@ -56,7 +56,9 @@ namespace IconPreview {
 		CssProvider provider = null;
 		List<DemoIcon> randoms;
 
-		public File hicolor { get; set; }
+		public File hicolor128 { get; set; }
+		public File hicolor64 { get; set; }
+		public File hicolor32 { get; set; }
 		public File ?symbolic { get; set; }
 
 		public new string name { get; set; }
@@ -89,17 +91,32 @@ namespace IconPreview {
 		construct {
 			DemoIcon ico;
 
-			notify["hicolor"].connect (() => {
+			notify["hicolor32"].connect (() => {
 				if (symbolic == null) {
 					sizes.get_child_at (0, 0).hide ();
 					sizes.get_child_at (0, 1).hide ();
 				}
-				FileIcon icon = new FileIcon (hicolor);
-				// Three different sizes {32, 64, 128};
-				for (var i = 0; i < 3; i++) {
-					var image = sizes.get_child_at (i + 1, 0) as Image;
-					image.set_from_gicon (icon, BUTTON);
+				FileIcon icon1 = new FileIcon (hicolor32);
+				var image = sizes.get_child_at (1, 0) as Image;
+				image.set_from_gicon (icon1, BUTTON);
+			});
+			notify["hicolor64"].connect (() => {
+				if (symbolic == null) {
+					sizes.get_child_at (0, 0).hide ();
+					sizes.get_child_at (0, 1).hide ();
 				}
+				FileIcon icon2 = new FileIcon (hicolor64);
+				var image = sizes.get_child_at (2, 0) as Image;
+				image.set_from_gicon (icon2, BUTTON);
+			});
+			notify["hicolor128"].connect (() => {
+				if (symbolic == null) {
+					sizes.get_child_at (0, 0).hide ();
+					sizes.get_child_at (0, 1).hide ();
+				}
+				FileIcon icon3 = new FileIcon (hicolor128);
+				var image = sizes.get_child_at (3, 0) as Image;
+				image.set_from_gicon (icon3, BUTTON);
 			});
 
 			notify["symbolic"].connect (() => {
@@ -131,7 +148,7 @@ namespace IconPreview {
 
             // A pause for the custom icon…
 			ico = new DemoIcon (64);
-			bind_property ("hicolor", ico, "file");
+			bind_property ("hicolor64", ico, "file");
 			bind_property ("name", ico, "name");
 			grid.add (ico);
 
