@@ -105,6 +105,7 @@ namespace IconPreview {
 			var font_description = new Pango.FontDescription ();
 			font_description.set_weight (Pango.Weight.SEMIBOLD);
 			font_description.set_size (Pango.SCALE * 10);
+			font_description.set_family ("Inter");
 			layout.set_font_description (font_description);
 
 			var padding = 12;
@@ -117,6 +118,7 @@ namespace IconPreview {
 
 			var surface = new Cairo.ImageSurface (ARGB32, w, content_h);
 			var context = new Cairo.Context (surface);
+			context.set_source_rgba (250,250,250,255);
 
 			draw (context);
 
