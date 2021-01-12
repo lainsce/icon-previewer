@@ -1,6 +1,6 @@
 using Gtk;
 namespace IconPreview {
-	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/mainwindow.ui")]
+	[GtkTemplate (ui = "/com/github/lainsce/iconpreviewer/mainwindow.ui")]
 	public class Window : Hdy.ApplicationWindow {
 		[GtkChild]
 		Stack content;
@@ -20,6 +20,7 @@ namespace IconPreview {
 			{ "copy-screenshot", copy_screenshot },
 			{ "refresh", refresh },
 			{ "shuffle", shuffle },
+			{ "guide", guide },
 			{ "menu", open_menu },
 			{ "export", open_export },
 			{ "export-save", save_export, "s" }
@@ -95,8 +96,6 @@ namespace IconPreview {
 
 			notify["mode"].connect (mode_changed);
 			mode_changed ();
-
-			menu.menu_model = application.get_menu_by_id ("win-menu");
 
 			exporter = new Exporter ();
 			exportbtn.set_popover (exporter);
@@ -185,6 +184,14 @@ namespace IconPreview {
 
 			var s = new ScreenshotSaver (this, buf);
 			s.copy ();
+		}
+
+		private void guide () {
+            try {
+		        GLib.AppInfo.launch_default_for_uri ("https://elementary.io/docs/human-interface-guidelines#iconography", null);
+		    } catch (Error e) {
+		        message ("Err: %s", e.message);
+		    }
 		}
 
 		private void save_export (GLib.Action _act, Variant? arg) {

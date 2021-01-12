@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/lainsce/icon-previewer/icons/">
+  <gresource prefix="/com/github/lainsce/iconpreviewer/icons/">
     <file>io.elementary.AppCenter.svg</file>
     <file>io.elementary.Calculator.svg</file>
     <file>io.elementary.Files.svg</file>

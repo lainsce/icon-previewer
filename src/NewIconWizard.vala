@@ -1,7 +1,7 @@
 using Gtk;
 
 namespace IconPreview {
-	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/newiconwizard.ui")]
+	[GtkTemplate (ui = "/com/github/lainsce/iconpreviewer/newiconwizard.ui")]
 	class Wizard : Gtk.Dialog {
 		[GtkChild]
 		Dazzle.FileChooserEntry location;
@@ -68,7 +68,7 @@ namespace IconPreview {
 
 		private async File colour () {
 			var dest = File.new_for_path (Path.build_filename (location.file.get_path (), icon_title.text + ".Source.svg"));
-			var from = File.new_for_uri ("resource:///com/github/lainsce/icon-previewer/templates/colour.svg");
+			var from = File.new_for_uri ("resource:///com/github/lainsce/iconpreviewer/colour.svg");
 			try {
 				var p = dest.get_parent ();
 				if (!p.query_exists ()) {

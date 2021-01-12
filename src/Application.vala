@@ -60,11 +60,11 @@ namespace IconPreview {
 		}
 
 		public override void startup () {
-			set_resource_base_path ("/com/github/lainsce/icon-previewer");
+			set_resource_base_path ("/com/github/lainsce/iconpreviewer");
 			base.startup ();
 
 			var styles = new CssProvider ();
-			styles.load_from_resource ("/com/github/lainsce/icon-previewer/gtk/style.css");
+			styles.load_from_resource ("/com/github/lainsce/iconpreviewer/style.css");
 			// Use of uint.MAX isn't ideal, but we need to load the CSS any way we can
 			StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), styles, uint.MAX);
 

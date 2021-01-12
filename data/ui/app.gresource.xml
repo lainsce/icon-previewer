@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/lainsce/iconpreviewer/">
+    <file>newiconwizard.ui</file>
+    <file>iconsaver.ui</file>
+    <file>mainwindow.ui</file>
+    <file>colourpane.ui</file>
+    <file>iconexporter.ui</file>
+    <file>badge.svg</file>
+    <file>colour.svg</file>
+    <file>style.css</file>
+  </gresource>
+</gresources>

@@ -31,8 +31,31 @@ conf.set_quoted('PROFILE', profile)
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format (meson.project_name()), language: 'c')
 add_global_arguments('-DG_LOG_DOMAIN="@0@"'.format (application_id), language: 'c')
 
+deps = [
+	dependency('gtk+-3.0'),
+	dependency('librsvg-2.0', version: '>= 2.46'),
+	dependency('libdazzle-1.0'),
+	dependency('libhandy-1')
+]
+
+config = configure_file(input: 'src/Config.vala.in', output: 'Config.vala', configuration: conf)
+sources = [
+	config,
+	'src/Utils.vala',
+	'src/ColourPane.vala',
+	'src/Colour.vala',
+	'src/MainWindow.vala',
+	'src/Common.vala',
+	'src/IconExporter.vala',
+	'src/IconSaver.vala',
+	'src/NewIconWizard.vala',
+	'src/Application.vala'
+]
+
+gnome = import('gnome')
+meson.add_install_script('meson/post_install.py', join_paths(get_option('prefix'), get_option('datadir')))
+
 subdir('data')
 subdir('po')
-subdir('src')
 
-meson.add_install_script('meson/post_install.py', join_paths(get_option('prefix'), get_option('datadir')))
+executable(meson.project_name(), sources, dependencies: deps, install: true)

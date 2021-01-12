@@ -32,3 +32,13 @@ i18n.merge_file(
     install: true,
     install_dir: join_paths(get_option('datadir'), 'applications')
 )
+
+sources += gnome.compile_resources('resources',
+  'ui/app.gresource.xml',
+  source_dir: 'ui/'
+)
+
+sources += gnome.compile_resources('icons',
+  'appicons/icons.gresource.xml',
+  source_dir: 'appicons/'
+)

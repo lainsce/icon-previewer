@@ -1,7 +1,7 @@
 using Gtk;
 
 namespace IconPreview {
-	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/iconsaver.ui")]
+	[GtkTemplate (ui = "/com/github/lainsce/iconpreviewer/iconsaver.ui")]
 	class ScreenshotSaver : Gtk.Dialog {
 		[GtkChild]
 		Image preview;

@@ -3,6 +3,80 @@
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <requires lib="libhandy" version="1.0"/>
+  <object class="GtkPopover" id="popover1">
+    <property name="can-focus">False</property>
+    <child>
+      <!-- n-columns=1 n-rows=5 -->
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="row-spacing">6</property>
+        <property name="column-homogeneous">True</property>
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkModelButton">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">app.new-window</property>
+            <property name="text" translatable="yes">New Window</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkModelButton">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">win.refresh</property>
+            <property name="text" translatable="yes">Reload Icon…</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkModelButton">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">win.screenshot</property>
+            <property name="text" translatable="yes">Take Screenshot…</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkModelButton">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">win.shuffle</property>
+            <property name="text" translatable="yes">Shuffle Example Icons</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">4</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <template class="IconPreviewWindow" parent="HdyApplicationWindow">
     <property name="can-focus">True</property>
     <property name="window-position">center</property>
@@ -31,7 +105,7 @@
                 <property name="valign">center</property>
                 <property name="border-width">48</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">24</property>
+                <property name="spacing">12</property>
                 <child>
                   <!-- n-columns=1 n-rows=1 -->
                   <object class="GtkGrid">
@@ -45,6 +119,7 @@
                       <object class="GtkImage">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="opacity">0.5</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="pixel-size">128</property>
@@ -71,7 +146,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Make a new App Icon</property>
+                    <property name="label" translatable="yes">Make A New App Icon</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                     <property name="ellipsize">end</property>
@@ -91,7 +166,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Start making your own icon based on the guidelines</property>
+                    <property name="label" translatable="yes">Start making your own, based on the icon guidelines</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                     <property name="ellipsize">end</property>
@@ -124,6 +199,27 @@
                     <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label" translatable="yes">See Guidelines</property>
+                    <property name="width-request">200</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">center</property>
+                    <property name="action-name">win.guide</property>
+                    <style>
+                      <class name="flat"/>
+                      <class name="suggested-action-ghost"/>
+                      <class name="suggested-action"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <style>
@@ -179,6 +275,7 @@
                     <property name="receives-default">True</property>
                     <property name="tooltip-text" translatable="yes">Menu</property>
                     <property name="relief">none</property>
+                    <property name="popover">popover1</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>

@@ -42,7 +42,7 @@ namespace IconPreview {
 		}
 	}
 
-	[GtkTemplate (ui = "/com/github/lainsce/icon-previewer/colourpane.ui")]
+	[GtkTemplate (ui = "/com/github/lainsce/iconpreviewer/colourpane.ui")]
 	public class ColourPane : Box {
 		[GtkChild]
 		Grid sizes;

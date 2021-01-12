@@ -2,7 +2,7 @@ using Gtk;
 
 namespace IconPreview {
 	public class Colour : Box, Previewer {
-		const string RES_PATH = "/com/github/lainsce/icon-previewer/icons/";
+		const string RES_PATH = "/com/github/lainsce/iconpreviewer/icons/";
 		const string BASE_THEME = "io.elementary.stylesheet.blueberry";
 		static string[] colours;
 
@@ -87,7 +87,7 @@ namespace IconPreview {
 
 			Gdk.Pixbuf logo;
 			try {
-				logo = new Gdk.Pixbuf.from_resource_at_scale ("/com/github/lainsce/icon-previewer/badge.svg", 16, -1, true);
+				logo = new Gdk.Pixbuf.from_resource_at_scale ("/com/github/lainsce/iconpreviewer/badge.svg", 16, -1, true);
 			} catch (Error e) {
 				critical (e.message);
 				logo = new Gdk.Pixbuf (RGB, false, 1, 2, 2);
