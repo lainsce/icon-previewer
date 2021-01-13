@@ -183,7 +183,6 @@
             <property name="icon-name">com.github.lainsce.icon-preview-symbolic</property>
             <style>
               <class name="symbolic"/>
-              <class name="icon-dropshadow"/>
             </style>
           </object>
           <packing>

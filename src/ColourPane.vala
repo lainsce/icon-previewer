@@ -30,6 +30,9 @@ namespace IconPreview {
 					label.label = filename_parts[filename_parts.length - 1];
 					label.tooltip_text = filename;
 					image.gicon = new FileIcon (file);
+
+					var context = image.get_style_context ();
+					context.add_class ("icon-dropshadow");
 				}
 			});
 
