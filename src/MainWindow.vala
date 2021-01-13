@@ -103,6 +103,14 @@ namespace IconPreview {
 		construct {
 		    Hdy.init ();
 
+		    int window_x, window_y, width, height;
+            IconPreview.Application.gsettings.get ("window-position", "(ii)", out window_x, out window_y);
+            IconPreview.Application.gsettings.get ("window-size", "(ii)", out width, out height);
+            if (window_x != -1 || window_y != -1) {
+                move (window_x, window_y);
+            }
+            resize (width, height);
+
 			add_action_entries (ACTION_ENTRIES, this);
 
 			notify["mode"].connect (mode_changed);
@@ -117,7 +125,20 @@ namespace IconPreview {
             Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.grape");
             Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
             Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
+
+            set_size_request (450, 400);
 		}
+
+		public override bool delete_event (Gdk.EventAny event) {
+            int w, h;
+            get_size (out w, out h);
+            IconPreview.Application.gsettings.set ("window-size", "(ii)", w, h);
+            int root_x, root_y;
+            get_position (out root_x, out root_y);
+            IconPreview.Application.gsettings.set ("window-position", "(ii)", root_x, root_y);
+
+            return false;
+        }
 
 		private void _load_failed () {
 			var dlg = new MessageDialog (this, MODAL, WARNING, CANCEL, _("This file is defective"));

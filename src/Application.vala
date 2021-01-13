@@ -34,10 +34,15 @@ namespace IconPreview {
 	}
 
 	public class Application : Gtk.Application {
+	    public static GLib.Settings gsettings;
 		const GLib.ActionEntry[] ACTION_ENTRIES = {
 			{ "new-window", new_window },
 			{ "quit", quit }
 		};
+
+		static construct {
+            gsettings = new GLib.Settings ("com.github.lainsce.iconpreviewer");
+        }
 
 		construct {
 			add_action_entries (ACTION_ENTRIES, this);

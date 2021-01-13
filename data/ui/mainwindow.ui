@@ -163,13 +163,13 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Start making one, based on the Icon Guidelines</property>
+                    <property name="label" translatable="yes">Start based on the elementary Icon Guidelines</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
                     <property name="ellipsize">end</property>
                     <style>
                       <class name="heading"/>
-                      <class name="h2"/>
+                      <class name="h3"/>
                     </style>
                   </object>
                   <packing>
@@ -200,7 +200,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="label" translatable="yes">See Guidelines</property>
+                    <property name="label" translatable="yes">Open Guidelines…</property>
                     <property name="width-request">200</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
