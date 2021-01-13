@@ -80,8 +80,6 @@
   <template class="IconPreviewWindow" parent="HdyApplicationWindow">
     <property name="can-focus">True</property>
     <property name="window-position">center</property>
-    <property name="default-width">1108</property>
-    <property name="default-height">570</property>
     <property name="icon-name">com.github.lainsce.icon-previewer</property>
     <property name="gravity">center</property>
     <child>
