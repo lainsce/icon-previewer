@@ -1527,9 +1527,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="16"
-     inkscape:cx="156.57177"
+     inkscape:cx="145.04052"
      inkscape:cy="35.040967"
-     inkscape:current-layer="layer9"
+     inkscape:current-layer="layer3"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
@@ -1726,16 +1726,6 @@
          ry="0"
          inkscape:label="0" />
       <rect
-         style="opacity:0.112583;fill:#95a3ab;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round"
-         id="symbolic"
-         width="16"
-         height="16"
-         x="160"
-         y="172"
-         rx="0"
-         ry="0"
-         inkscape:label="0" />
-      <rect
          inkscape:label="0"
          y="172"
          x="9.2651362e-08"
@@ -1750,6 +1740,16 @@
          height="64"
          x="132"
          y="236"
+         rx="0"
+         ry="0"
+         inkscape:label="0" />
+      <rect
+         style="display:inline;opacity:0.112583;fill:#95a3ab;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
+         id="16"
+         width="16"
+         height="16"
+         x="160"
+         y="172"
          rx="0"
          ry="0"
          inkscape:label="0" />
@@ -1809,16 +1809,6 @@
            sodipodi:role="line"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4px;font-family:Inter;-inkscape-font-specification:'Inter Bold';stroke-width:0.332649">16px (symbolic)</tspan></text>
       <rect
-         style="display:inline;opacity:0.112583;fill:none;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
-         id="16"
-         width="16"
-         height="16"
-         x="160"
-         y="172"
-         rx="0"
-         ry="0"
-         inkscape:label="0" />
-      <rect
          inkscape:label="0"
          y="172"
          x="1e-07"
@@ -1846,18 +1836,28 @@
          rx="0"
          ry="0"
          inkscape:label="0" />
+      <rect
+         style="display:inline;opacity:0.112583;fill:none;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
+         id="symbolic"
+         width="16"
+         height="16"
+         x="160"
+         y="172"
+         rx="0"
+         ry="0"
+         inkscape:label="0" />
     </g>
     <g
        inkscape:groupmode="layer"
        id="layer9"
        inkscape:label="icons"
-       style="display:inline" />
+       style="display:inline"
+       sodipodi:insensitive="true" />
     <g
        inkscape:groupmode="layer"
        id="layer3"
        inkscape:label="grid"
-       style="display:inline"
-       sodipodi:insensitive="true">
+       style="display:inline">
       <rect
          style="display:inline;opacity:0.3;fill:none;fill-opacity:0;stroke:#667885;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1;enable-background:new"
          id="rect904-3"
@@ -1978,15 +1978,16 @@
          r="3" />
       <text
          xml:space="preserve"
-         style="font-size:3px;line-height:1;font-family:Inter;-inkscape-font-specification:Inter;display:inline;fill:#666666;enable-background:new"
-         x="185.66194"
-         y="182.79901"
-         id="text1161"><tspan
+         style="font-size:3.17548px;line-height:1;font-family:Inter;-inkscape-font-specification:Inter;display:inline;fill:#666666;stroke-width:1;enable-background:new"
+         x="186.34433"
+         y="182.77071"
+         id="text1161"
+         transform="scale(0.99684916,1.0031608)"><tspan
            sodipodi:role="line"
            id="tspan1159"
-           x="185.66194"
-           y="182.79901"
-           style="font-size:3px;fill:#666666">50% alpha</tspan></text>
+           x="186.34433"
+           y="182.77071"
+           style="font-size:3.17548px;fill:#666666;stroke-width:1">50% alpha</tspan></text>
     </g>
   </g>
 </svg>
