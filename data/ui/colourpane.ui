@@ -94,9 +94,6 @@
             <property name="valign">end</property>
             <property name="pixel-size">128</property>
             <property name="icon-name">com.github.lainsce.icon-preview</property>
-            <style>
-              <class name="icon-dropshadow"/>
-            </style>
           </object>
           <packing>
             <property name="left-attach">3</property>
@@ -123,9 +120,6 @@
             <property name="valign">end</property>
             <property name="pixel-size">64</property>
             <property name="icon-name">com.github.lainsce.icon-preview</property>
-            <style>
-              <class name="icon-dropshadow"/>
-            </style>
           </object>
           <packing>
             <property name="left-attach">2</property>
@@ -152,9 +146,6 @@
             <property name="valign">end</property>
             <property name="pixel-size">32</property>
             <property name="icon-name">com.github.lainsce.icon-preview</property>
-            <style>
-              <class name="icon-dropshadow"/>
-            </style>
           </object>
           <packing>
             <property name="left-attach">1</property>
