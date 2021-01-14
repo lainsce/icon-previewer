@@ -31,14 +31,9 @@ namespace IconPreview {
 
 				    light.name = dark.name = _icon.get_basename ();
 
-                    // At least one exists
-				    if (hicolor128 != null) {
-					    light.hicolor128 = dark.hicolor128 = hicolor128;
-					    light.hicolor64 = dark.hicolor64 = hicolor64;
-					    light.hicolor32 = dark.hicolor32 = hicolor32;
-				    } else {
-					    light.hicolor128 = dark.hicolor128 = _icon;
-				    }
+				    light.hicolor128 = dark.hicolor128 = hicolor128;
+				    light.hicolor64 = dark.hicolor64 = hicolor64;
+				    light.hicolor32 = dark.hicolor32 = hicolor32;
 
 				    exporter.update_regular128 (light.hicolor128);
 				    exporter.update_regular64 (light.hicolor64);

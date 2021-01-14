@@ -12,6 +12,7 @@ namespace IconPreview {
 			    var cr = new Cairo.Context (surface);
 			    cr.scale (output_size / size.width, output_size / size.height);
 			    cr.translate (-size.x, -size.y);
+			    cr.fill ();
 			    svg.render_cairo (cr);
 			    return surface;
 			} catch (Error e) {
