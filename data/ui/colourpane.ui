@@ -84,8 +84,8 @@
         <property name="valign">center</property>
         <property name="margin-top">18</property>
         <property name="margin-bottom">18</property>
-        <property name="row-spacing">12</property>
-        <property name="column-spacing">32</property>
+        <property name="row-spacing">6</property>
+        <property name="column-spacing">24</property>
         <child>
           <object class="GtkImage">
             <property name="visible">True</property>
@@ -93,7 +93,7 @@
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="pixel-size">128</property>
-            <property name="icon-name">com.github.lainsce.icon-preview</property>
+            <property name="icon-name">com.github.lainsce.icon-previewer</property>
           </object>
           <packing>
             <property name="left-attach">4</property>
@@ -119,7 +119,7 @@
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="pixel-size">64</property>
-            <property name="icon-name">com.github.lainsce.icon-preview</property>
+            <property name="icon-name">com.github.lainsce.icon-previewer</property>
           </object>
           <packing>
             <property name="left-attach">3</property>
@@ -145,7 +145,7 @@
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="pixel-size">32</property>
-            <property name="icon-name">com.github.lainsce.icon-preview</property>
+            <property name="icon-name">com.github.lainsce.icon-previewer</property>
           </object>
           <packing>
             <property name="left-attach">1</property>
@@ -171,7 +171,7 @@
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="pixel-size">16</property>
-            <property name="icon-name">com.github.lainsce.icon-preview-symbolic</property>
+            <property name="icon-name">com.github.lainsce.icon-previewer-symbolic</property>
             <style>
               <class name="symbolic"/>
             </style>
@@ -200,7 +200,7 @@
             <property name="halign">center</property>
             <property name="valign">end</property>
             <property name="pixel-size">48</property>
-            <property name="icon-name">com.github.lainsce.icon-preview</property>
+            <property name="icon-name">com.github.lainsce.icon-previewer</property>
           </object>
           <packing>
             <property name="left-attach">2</property>

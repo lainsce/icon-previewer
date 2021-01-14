@@ -35,6 +35,7 @@ namespace IconPreview {
 
 					Rsvg.Rectangle hicolor128 = { 0.0, 0.0, svg.width, svg.height };
 					Rsvg.Rectangle hicolor64 = { 0.0, 0.0, svg.width, svg.height };
+					Rsvg.Rectangle hicolor48 = { 0.0, 0.0, svg.width, svg.height };
 					Rsvg.Rectangle hicolor32 = { 0.0, 0.0, svg.width, svg.height };
 
 					if (svg.has_sub ("#128")) {
@@ -45,14 +46,17 @@ namespace IconPreview {
             			Rsvg.Rectangle viewport1 = { 0.0, 0.0, svg.width, svg.height };
 						svg.get_geometry_for_layer ( "#64", viewport1, null, out hicolor64);
 					}
-					if (svg.has_sub ("#32")) {
+					if (svg.has_sub ("#48")) {
             			Rsvg.Rectangle viewport2 = { 0.0, 0.0, svg.width, svg.height };
-						svg.get_geometry_for_layer ( "#32", viewport2, null, out hicolor32);
+						svg.get_geometry_for_layer ( "#48", viewport2, null, out hicolor48);
+					}
+					if (svg.has_sub ("#32")) {
+            			Rsvg.Rectangle viewport3 = { 0.0, 0.0, svg.width, svg.height };
+						svg.get_geometry_for_layer ( "#32", viewport3, null, out hicolor32);
 					}
 
-					if (hicolor128.height == 128 && hicolor128.width == 128 &&
-					    hicolor64.height == 64 && hicolor64.width == 64 &&
-					    hicolor32.height == 32 && hicolor32.width == 32) {
+                    // Has to have at least one
+					if (hicolor128.height == 128 && hicolor128.width == 128) {
 						mode = COLOUR;
 					} else {
 						_file = null;
@@ -141,7 +145,7 @@ namespace IconPreview {
         }
 
 		private void _load_failed () {
-			var dlg = new MessageDialog (this, MODAL, WARNING, CANCEL, _("This file is defective"));
+			var dlg = new MessageDialog (this, MODAL, WARNING, CANCEL, _("This file is not a template"));
 			dlg.secondary_text = _("Please start from a template to ensure that your file will work as an elementary OS icon");
 			dlg.response.connect (() => dlg.destroy ());
 			dlg.show ();

@@ -23,6 +23,8 @@ namespace IconPreview {
 				    render_by_id (svg, "#128", hicolor128, 128);
 				    var hicolor64 = create_tmp_file ("#64");
 				    render_by_id (svg, "#64", hicolor64, 64);
+				    var hicolor48 = create_tmp_file ("#48");
+				    render_by_id (svg, "#48", hicolor48, 48);
 				    var hicolor32 = create_tmp_file ("#32");
 				    render_by_id (svg, "#32", hicolor32, 32);
 
@@ -33,10 +35,12 @@ namespace IconPreview {
 
 				    light.hicolor128 = dark.hicolor128 = hicolor128;
 				    light.hicolor64 = dark.hicolor64 = hicolor64;
+				    light.hicolor48 = dark.hicolor48 = hicolor48;
 				    light.hicolor32 = dark.hicolor32 = hicolor32;
 
 				    exporter.update_regular128 (light.hicolor128);
 				    exporter.update_regular64 (light.hicolor64);
+				    exporter.update_regular48 (light.hicolor48);
 				    exporter.update_regular32 (light.hicolor32);
 				    exporter.update_symbolic (symbolic);
 				    exporter.name = light.name;
