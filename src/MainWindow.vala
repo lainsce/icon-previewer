@@ -228,19 +228,25 @@ namespace IconPreview {
 			switch (arg as string) {
 				case "regular128": {
 					title = _("Save Regular");
-					filename = filename + "128.svg";
+					filename = filename + "-128.svg";
 					file = exporter.get_regular128 ();
 					break;
 				}
 				case "regular64": {
 					title = _("Save Regular");
-					filename = filename + "64.svg";
+					filename = filename + "-64.svg";
 					file = exporter.get_regular64 ();
+					break;
+				}
+				case "regular48": {
+					title = _("Save Regular");
+					filename = filename + "-48.svg";
+					file = exporter.get_regular48 ();
 					break;
 				}
 				case "regular32": {
 					title = _("Save Regular");
-					filename = filename + "32.svg";
+					filename = filename + "-32.svg";
 					file = exporter.get_regular32 ();
 					break;
 				}

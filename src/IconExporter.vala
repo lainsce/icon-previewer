@@ -12,6 +12,9 @@ namespace IconPreview {
     Image regular_image64;
 
     [GtkChild]
+    Image regular_image48;
+
+    [GtkChild]
     Image regular_image32;
 
     [GtkChild]
@@ -21,6 +24,9 @@ namespace IconPreview {
     Box regular_box64;
 
     [GtkChild]
+    Box regular_box48;
+
+    [GtkChild]
     Box regular_box32;
 
     [GtkChild]
@@ -28,6 +34,9 @@ namespace IconPreview {
 
     [GtkChild]
     Label regular_size64;
+
+    [GtkChild]
+    Label regular_size48;
 
     [GtkChild]
     Label regular_size32;
@@ -61,6 +70,17 @@ namespace IconPreview {
     	regular_size64.hide ();
       } else {
         regular_box64.hide ();
+      }
+    }
+    public void update_regular48 (File? source48) {
+      if (source48 != null) {
+        regular_box48.show ();
+        FileIcon icon48 = new FileIcon (source48);
+        regular_image48.set_from_gicon (icon48, BUTTON);
+        regular_size48.set_label (get_file_size (source48));
+    	regular_size48.hide ();
+      } else {
+        regular_box48.hide ();
       }
     }
     public void update_regular32 (File? source32) {
@@ -102,6 +122,9 @@ namespace IconPreview {
     }
     public File get_regular64 () {
       return ((FileIcon) regular_image64.gicon).get_file ();
+    }
+    public File get_regular48 () {
+      return ((FileIcon) regular_image48.gicon).get_file ();
     }
     public File get_regular32 () {
       return ((FileIcon) regular_image32.gicon).get_file ();
