@@ -8,18 +8,38 @@
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">True</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="orientation">vertical</property>
         <property name="spacing">10</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Export the icon for use</property>
+            <property name="justify">center</property>
+            <property name="wrap">True</property>
+            <property name="track-visited-links">False</property>
+            <style>
+              <class name="h3"/>
+              <class name="heading"/>
+            </style>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="halign">start</property>
-            <property name="margin-start">12</property>
-            <property name="margin-end">12</property>
-            <property name="margin-top">12</property>
-            <property name="margin-bottom">12</property>
-            <property name="label" translatable="yes">Export the icon for use. Off-canvas objects are removed and the SVG is optimised for size.</property>
+            <property name="label" translatable="yes">Off-canvas objects are removed and the SVG is optimised for size</property>
             <property name="justify">center</property>
             <property name="wrap">True</property>
             <property name="track-visited-links">False</property>
@@ -27,7 +47,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -485,7 +505,7 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

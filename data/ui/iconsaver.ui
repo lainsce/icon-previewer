@@ -16,6 +16,7 @@
         <child internal-child="action_area">
           <object class="GtkButtonBox">
             <property name="can-focus">False</property>
+            <property name="margin-end">18</property>
             <child>
               <object class="GtkButton">
                 <property name="label" translatable="yes">Close</property>
@@ -61,7 +62,11 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="margin-bottom">12</property>
             <property name="orientation">vertical</property>
+            <property name="spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -80,16 +85,35 @@
               </packing>
             </child>
             <child>
-              <object class="GtkImage" id="preview">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="pixel-size">256</property>
-                <property name="icon-name">image-x-generic-symbolic</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">This screenshot will be optimized for size, and will be
+instantly shareable</property>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkImage" id="preview">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="pixel-size">256</property>
+                <property name="icon-name">image-x-generic-symbolic</property>
+                <style>
+                  <class name="card"/>
+                </style>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
