@@ -1526,16 +1526,16 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="272.24786"
-     inkscape:cy="126.79316"
+     inkscape:zoom="4"
+     inkscape:cx="131.24391"
+     inkscape:cy="98.01024"
      inkscape:current-layer="layer9"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
      inkscape:showpageshadow="false"
      inkscape:window-width="2560"
-     inkscape:window-height="940"
+     inkscape:window-height="958"
      inkscape:window-x="0"
      inkscape:window-y="30"
      width="400px"
@@ -1896,10 +1896,6 @@
        style="display:inline;opacity:1"
        sodipodi:insensitive="true">
       <path
-         d="m 155.62012,243.89976 a 0.66666853,0.66666853 0 0 1 -1.33333,0 0.66666853,0.66666853 0 1 1 1.33333,0 z"
-         id="path4356-7-9-9"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.33831;marker:none;enable-background:accumulate" />
-      <path
          style="display:inline;opacity:0.3;fill:none;stroke:#485a6c;stroke-width:0.999987;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.999987, 2;stroke-dashoffset:0;stroke-opacity:1;enable-background:new"
          d="m 171.93007,240.75181 -23.52637,39.7482 h 47.05279 z"
          id="path908-0" />
@@ -2037,10 +2033,6 @@
          style="display:inline;opacity:0.3;fill:none;stroke:#485a6c;stroke-width:0.999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.999994, 2;stroke-dashoffset:0;stroke-opacity:1;enable-background:new"
          d="m 63.644557,173.99999 -63.644558,116 H 127.28931 Z"
          id="path908-7" />
-      <path
-         d="m 168.72189,204.47196 a 0.44444569,0.44444569 0 0 1 -0.88889,0 0.44444569,0.44444569 0 1 1 0.88889,0 z"
-         id="path4356-7-9"
-         style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.33831;marker:none;enable-background:accumulate" />
       <circle
          style="display:inline;opacity:1;fill:#666666;stroke-width:0.999998;stroke-linecap:round;stroke-linejoin:round;enable-background:new"
          id="path1138"
