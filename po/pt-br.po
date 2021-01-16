@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.icon-previewer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Lains <lainsce@airmail.cc>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.icon-previewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-16 00:31-0300\n"
+"PO-Revision-Date: 2021-01-16 00:37-0300\n"
+"Last-Translator: Lains <lainsce@airmail.cc>\n"
+"Language-Team: Portuguese <lainsce@airmail.cc>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 3.38.0\n"
+
+#: src/Application.vala:98 src/MainWindow.vala:157 src/MainWindow.vala:317
+msgid "Icon Previewer"
+msgstr "Visualizador de Ícone"
+
+#: src/MainWindow.vala:148
+msgid "This file is not a template"
+msgstr "Este arquivo não é um modelo"
+
+#: src/MainWindow.vala:149
+msgid ""
+"Please start from a template to ensure that your file will work as an "
+"elementary OS icon"
+msgstr ""
+"Por favor comece com um modelo para assegurar que seu arquivo irá funcionar "
+"como um ícone do elementary OS"
+
+#: src/MainWindow.vala:187
+msgid "Select Icon"
+msgstr "Selecione Ícone"
+
+#: src/MainWindow.vala:187
+msgid "_Open"
+msgstr "_Abrir"
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/MainWindow.vala:192
+msgid "Icons"
+msgstr "Ícones"
+
+#: src/MainWindow.vala:234 src/MainWindow.vala:240 src/MainWindow.vala:246
+#: src/MainWindow.vala:252
+msgid "Save Regular"
+msgstr "Salve Regular"
+
+#: src/MainWindow.vala:258
+msgid "Save Symbolic"
+msgstr "Salve P&amp;B"
+
+#: src/MainWindow.vala:264
+msgid "_Save"
+msgstr "_Salvar"
+
+#: src/MainWindow.vala:271
+msgid "Icon"
+msgstr "Ícone"
+
+#: src/MainWindow.vala:277
+msgid "SVG"
+msgstr "GVS"
+
+#: src/MainWindow.vala:287
+msgid "Failed to save exported file"
+msgstr "Falha ao salvar arquivo exportado"
