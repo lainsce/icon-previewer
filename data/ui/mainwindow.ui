@@ -10,6 +10,8 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
         <property name="row-spacing">6</property>
@@ -104,6 +106,7 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="border-width">48</property>
                 <property name="orientation">vertical</property>
@@ -145,6 +148,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label" translatable="yes">Make A New App Icon</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
@@ -165,6 +169,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label" translatable="yes">Start based on the elementary Icon Guidelines</property>
                     <property name="justify">center</property>
                     <property name="wrap">True</property>
@@ -243,8 +248,10 @@
                 <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="title" translatable="yes">Icon Previewer</property>
+                <property name="has-subtitle">False</property>
                 <property name="show-close-button">True</property>
                 <property name="decoration-layout">close:maximize</property>
+                <property name="centering-policy">strict</property>
                 <property name="interpolate-size">True</property>
                 <child>
                   <object class="GtkButton">
@@ -262,9 +269,6 @@
                         <property name="icon_size">3</property>
                       </object>
                     </child>
-                    <style>
-                      <class name="flat"/>
-                    </style>
                   </object>
                 </child>
                 <child>
@@ -283,9 +287,6 @@
                         <property name="icon_size">3</property>
                       </object>
                     </child>
-                    <style>
-                      <class name="flat"/>
-                    </style>
                   </object>
                   <packing>
                     <property name="pack-type">end</property>
@@ -305,18 +306,12 @@
                         <property name="icon_size">3</property>
                       </object>
                     </child>
-                    <style>
-                      <class name="flat"/>
-                    </style>
                   </object>
                   <packing>
                     <property name="pack-type">end</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
-                <style>
-                  <class name="titlebar"/>
-                </style>
               </object>
             </child>
           </object>

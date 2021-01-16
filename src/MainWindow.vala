@@ -6,6 +6,9 @@ namespace IconPreview {
 		Stack content;
 
 		[GtkChild]
+		Hdy.HeaderBar headerbar;
+
+		[GtkChild]
 		MenuButton menu;
 
 		[GtkChild]
@@ -196,6 +199,11 @@ namespace IconPreview {
 			dlg.response.connect (res => {
 				if (res == ResponseType.ACCEPT) {
 					file = dlg.get_file ();
+					var name = file.get_basename();
+					var filename_parts = name.split (".");
+					headerbar.set_subtitle (filename_parts[filename_parts.length - 3] + " - "
+					                      + name.substring (0, name.last_index_of (".svg"))
+					                            .substring (0, name.last_index_of (".Source")));
 				}
 				dlg.close ();
 			});
