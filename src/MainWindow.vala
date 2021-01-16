@@ -129,10 +129,6 @@ namespace IconPreview {
 			var action = lookup_action ("export");
 			action.bind_property ("enabled", exportbtn, "visible", GLib.BindingFlags.SYNC_CREATE);
 
-            Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.grape");
-            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
-            Gtk.Settings.get_default().set_property("gtk-font-name", "Inter 9");
-
             set_size_request (450, 400);
 		}
 
@@ -187,9 +183,11 @@ namespace IconPreview {
 		}
 
 		private void open () {
-			var dlg = new FileChooserDialog (_("Select Icon"), this, OPEN, _("_Open"),
-		                                             Gtk.ResponseType.ACCEPT,
-		                                             _("Cancel"), Gtk.ResponseType.CANCEL);
+			var dlg = new FileChooserNative (_("Select Icon"),
+                                              this,
+                                              OPEN,
+                                              "_Open",
+                                              "_Cancel");
 			dlg.modal = true;
 			var filter = new Gtk.FileFilter ();
 			filter.set_filter_name (_("Icons"));
@@ -199,13 +197,8 @@ namespace IconPreview {
 			dlg.response.connect (res => {
 				if (res == ResponseType.ACCEPT) {
 					file = dlg.get_file ();
-					var name = file.get_basename();
-					var filename_parts = name.split (".");
-					headerbar.set_subtitle (filename_parts[filename_parts.length - 3] + " - "
-					                      + name.substring (0, name.last_index_of (".svg"))
-					                            .substring (0, name.last_index_of (".Source")));
 				}
-				dlg.close ();
+				dlg.destroy ();
 			});
 			dlg.show ();
 		}
@@ -320,6 +313,12 @@ namespace IconPreview {
 			try {
 				var info = src.query_info ("standard::display-name", NONE);
 				title = info.get_display_name ();
+				var name = file.get_basename();
+				var filename_parts = name.split (".");
+				// App - com.example.user.App
+				headerbar.set_subtitle (filename_parts[filename_parts.length - 3] + " - "
+				                      + name.substring (0, name.last_index_of (".svg"))
+				                            .substring (0, name.last_index_of (".Source")));
 			} catch (Error e) {
 				critical ("Failed to fetch icon name: %s", e.message);
 				title = _("Icon Previewer");

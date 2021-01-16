@@ -53,7 +53,7 @@ demo-icon {
 .exporter .thumbnail {
 	border: 1px solid alpha(black, 0.24);
 	padding: 8px;
-	background: @theme_base_color;
+	background: @theme_bg_color;
 	border-radius: 3px;
 }
 
@@ -66,15 +66,25 @@ demo-icon {
   border-radius: 50px;
   padding: 10px;
 }
-
 .welcome .suggested-action-ghost {
   box-shadow: none;
   background: none;
-  border: 1px solid @accent_color;
+  border: 1px solid @theme_selected_bg_color;
+  color: @theme_selected_bg_color;
+}
+
+.welcome .suggested-action-ghost:hover {
+  box-shadow: none;
+  background: linear-gradient(to bottom, shade(mix(@theme_bg_color, @theme_selected_bg_color, 0.5), 1.1) 2px, shade(mix(@theme_bg_color, @theme_selected_bg_color, 0.5), 1.05));
+  border: 1px solid shade(@theme_selected_bg_color, 0.88);
+  text-shadow: 1px 1px transparent;
+  color: @theme_fg_color;
 }
 
 .welcome .suggested-action-ghost:active {
   box-shadow: none;
-  background: linear-gradient(to bottom, shade(mix(@base_color, @accent_color, 0.5), 1.1) 2px, shade(mix(@base_color, @accent_color, 0.5), 1.1));
-  border: 1px solid shade(@accent_color, 0.88);
+  background: linear-gradient(to bottom, shade(mix(@theme_bg_color, @theme_selected_bg_color, 0.5), 0.85) 2px, shade(mix(@theme_bg_color, @theme_selected_bg_color, 0.5), 0.9));
+  border: 1px solid shade(@theme_selected_bg_color, 0.88);
+  text-shadow: 1px 1px transparent;
+  color: @theme_selected_fg_color;
 }

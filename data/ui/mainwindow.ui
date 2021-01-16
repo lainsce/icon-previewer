@@ -250,7 +250,6 @@
                 <property name="title" translatable="yes">Icon Previewer</property>
                 <property name="has-subtitle">False</property>
                 <property name="show-close-button">True</property>
-                <property name="decoration-layout">close:maximize</property>
                 <property name="centering-policy">strict</property>
                 <property name="interpolate-size">True</property>
                 <child>
