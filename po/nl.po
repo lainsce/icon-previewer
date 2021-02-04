@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.icon-previewer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.icon-previewer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-16 00:31-0300\n"
+"PO-Revision-Date: 2021-02-04 17:57+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: src/Application.vala:98 src/MainWindow.vala:157 src/MainWindow.vala:317
+msgid "Icon Previewer"
+msgstr "Pictogramvoorvertoning"
+
+#: src/MainWindow.vala:148
+msgid "This file is not a template"
+msgstr "Dit bestand is geen sjabloon"
+
+#: src/MainWindow.vala:149
+msgid ""
+"Please start from a template to ensure that your file will work as an "
+"elementary OS icon"
+msgstr ""
+"Open een sjabloon zodat je er zeker van kunt zijn dat je pictogram past "
+"in de elementary OS-stijl"
+
+#: src/MainWindow.vala:187
+msgid "Select Icon"
+msgstr "Kies een pictogram"
+
+#: src/MainWindow.vala:187
+msgid "_Open"
+msgstr "_Openen"
+
+#: src/MainWindow.vala:189
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/MainWindow.vala:192
+msgid "Icons"
+msgstr "Pictogrammen"
+
+#: src/MainWindow.vala:234 src/MainWindow.vala:240 src/MainWindow.vala:246
+#: src/MainWindow.vala:252
+msgid "Save Regular"
+msgstr "Normaal pictogram opslaan"
+
+#: src/MainWindow.vala:258
+msgid "Save Symbolic"
+msgstr "Symbolisch pictogram opslaan"
+
+#: src/MainWindow.vala:264
+msgid "_Save"
+msgstr "Op_slaan"
+
+#: src/MainWindow.vala:271
+msgid "Icon"
+msgstr "Pictogram"
+
+#: src/MainWindow.vala:277
+msgid "SVG"
+msgstr "SVG"
+
+#: src/MainWindow.vala:287
+msgid "Failed to save exported file"
+msgstr "Het geëxporteerde bestand kan niet worden opgeslagen"
